@@ -22,7 +22,8 @@ class WorkExpQueue {
     WorkExpQueue();
     WorkExpQueue(WorkExpQueue&);
     ~WorkExpQueue();
-
+    
+    void  operator+=(WorkExp*);
     void  pushBack(WorkExp*);
     bool  popFront();
     Node* front();
