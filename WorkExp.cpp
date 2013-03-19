@@ -41,4 +41,8 @@ void WorkExp::setDataMembers(string dur, string s, string e) {
   end = e;
 }
 
+void WorkExp::print(){
+cout<<"Resp: "<<resp<<", Dur: "<<duration<<", Start:"<<start<<", End: "<<end<<endl;
+}
+
 

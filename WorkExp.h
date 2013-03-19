@@ -24,7 +24,7 @@ class WorkExp {
 
     void setResp(string);
     void setDataMembers(string, string, string);
-
+    void print();
 
   private:
     string   resp;

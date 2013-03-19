@@ -14,33 +14,44 @@ class WorkExpQueue;
 enum Status { PENDING=0, ACCEPTED=1, CLOSED=2 };
 
 class Application {
-  public:
-    Application();
-    ~Application();
+	public:
+		Application();
+		~Application();
 
-    Course*            getCourse()             const;
-    Status             getStatus()             const;
-    int                getAppNum()             const;
-    string             getStatusString(Status) const;
-    TACourseQueue*     getTACrsQueue()         const;
-    WorkExpQueue*      getWorkExpQueue()       const;
+		Course*            getCourse()             const;
+		Status             getStatus()             const;
+		int                getAppNum()             const;
+		string             getStatusString(Status) const;
+		TACourseQueue*     getTACrsQueue()         const;
+		WorkExpQueue*      getWorkExpQueue()       const;
 
-    void   setCourse(Course*);
-    void   setStatus(Status);
-    void   setAppNum(int);
-    void   setTACrsQueue(TACourseQueue*);
-    void   setWorkExpQueue(WorkExpQueue*);
-    void   print() const;
+		void   setCourse(Course*);
+		void   setStatus(Status);
+		void   setAppNum(int);
+		void   setTACrsQueue(TACourseQueue*);
+		void   setWorkExpQueue(WorkExpQueue*);
+		void   print() const;
+		Application operator-(){
+			Application app;
+			app.setStatus(CLOSED);
+			return app;
+		}
+		Application operator+(){
+			Application app;
+			app.setStatus(ACCEPTED);
+			return app;
+		}
+	private:
+		Course*       course;
+		Status        status;
+		int           appNum;
 
-  private:
-    Course*       course;
-    Status        status;
-    int           appNum;
-
-    // Linked lists
-    TACourseQueue*    tACrsQueue;
-    WorkExpQueue*     workExp;   
+		// Linked lists
+		TACourseQueue*    tACrsQueue;
+		WorkExpQueue*     workExp;   
 
 };
+
+
 
 #endif

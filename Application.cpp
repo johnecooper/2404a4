@@ -53,3 +53,5 @@ void Application::print() const {
   cout << "APPLICATION #: " << appNum << " for " << course->getName() 
        << " " << getStatusString(status) << endl;
 }
+
+
