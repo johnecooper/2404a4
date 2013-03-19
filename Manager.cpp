@@ -533,9 +533,17 @@ void Manager::assembleQueues() {
             getline(infile3, t3);
             wrkExp->setDataMembers(t1, t2, t3);
             if (gradType == 0)
-              uApp->getWorkExpQueue()->pushBack(wrkExp);
+	    {
+	      WorkExpQueue temp; 
+	      temp = *(uApp->getWorkExpQueue());
+              temp += wrkExp;
+	    }
             else
-              gApp->getWorkExpQueue()->pushBack(wrkExp);
+	    {
+	      WorkExpQueue temp; 
+	      temp = *(gApp->getWorkExpQueue());
+              temp += wrkExp;
+	    }
             getline(infile3, text);
           }
         }
