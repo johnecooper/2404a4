@@ -46,6 +46,11 @@ WorkExpQueue::~WorkExpQueue() {
  //cout << "DESTRUCT WorkExpQueue" << endl;
 }
 
+void WorkExpQueue::operator+=(WorkExp* w)
+{
+  pushBack(w);
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Adds an item to the back of the queue
 void WorkExpQueue::pushBack(WorkExp* newWork){
