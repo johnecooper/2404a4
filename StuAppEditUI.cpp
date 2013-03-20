@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////
-// STUDENT APPLICATION FORM WINDOW
-// Prompts user to input their general information
+// STUDENT APPLICATION FORM EDIT WINDOW
+// Prompts user to edit their general information
 
 #include <locale>  // for isdigit, isalpha, ispunct, char_traits
 #include <fstream>
@@ -8,14 +8,14 @@
 
 #include "StuAppEditUI.h"
 #include "CourseInfoUI.h"
-#include "StuOptionUI.h"
+#include "StudentNumberUI.h"
 #include "Tools.h"
 #include "CourseQueue.h"
 #include "UGradApp.h"
 #include "UGradAppQueue.h"
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
-StuAppEditUI::StuAppEditUI(Manager* aManager, bool rpt, int appNumIn) 
+StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn) 
 	: appTable(11, 3, false),
 	label("Please enter your information: "),
 	nextButton("Next"),
@@ -23,7 +23,6 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool rpt, int appNumIn)
 	appNumber(appNumIn)
 {
 	manager = aManager;
-	repeat = rpt;
 	int i=0, count=0;
 
 	set_default_size(700, 475);
@@ -77,83 +76,77 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool rpt, int appNumIn)
 	for (i=0; i<(count); i++) 
 		majorCombo.append(majors[i]);
 
-	// If the user already made application this session
+	//Recall the application information
+	UGradAppQueue::Node * n = (manager->getUGradApps()->front());
+	bool found=false;
+	cout<<"Searching for:"<<appNumber<<endl;
+	while(n->next != 0){
+		if(n->data->getAppNum()==appNumber){
+			found=true;
+			cout<<"Found app#:" <<n->data->getAppNum()<<endl;
+			break;
+		}
+		else cout<<"Not"<<endl;
+		n=n->next;
+	}
+	cout<<"End while"<<endl;
+	if(!found){
+		noApplicationDialog();
+		cout<<"No application found"<<endl;
+		*rpt = false;	
+	}
+	else{	
+		string text, emailName, emailDomain, aMajor;
 
+		stuNumEntry.set_text(n->data->getUndergrad()->getStuNum());
+		nameEntry.set_text(n->data->getUndergrad()->getFirstName());
+		surnameEntry.set_text(n->data->getUndergrad()->getSurname());
 
+		text = n->data->getUndergrad()->getEmail();
+		emailName = text.substr(0, text.find("@"));
+		emailDomain = text.substr(text.find("@"));
 
-	if (true) {
-		UGradAppQueue::Node * n = (manager->getUGradApps()->front());
-		bool found=false;
-		cout<<"Searching for:"<<appNumber<<endl;
-		while(n != 0){
-			if(n->data->getAppNum()==appNumber){
-			       found=true;
-				cout<<"Found app#:" <<n->data->getAppNum()<<endl;
+		emailEntry.set_text(emailName);
+		if (emailDomain == "@cmail.carleton.ca")
+			emailCombo.set_active(0);
+		else
+			emailCombo.set_active(1);
+
+		aMajor = n->data->getUndergrad()->getMajor();
+		for (i=0; i<count; i++) {
+			if (majors[i] == aMajor) {
+				majorCombo.set_active(i);
 				break;
 			}
-			n=n->next;
 		}
-		if(!found){
-			//Do whatever
-		}
-		/*
-		   string text, emailName, emailDomain, aMajor;
 
-		   stuNumEntry.set_text(manager->getCurrUGradApp()->getUndergrad()->getStuNum());
-		   nameEntry.set_text(manager->getCurrUGradApp()->getUndergrad()->getFirstName());
-		   surnameEntry.set_text(manager->getCurrUGradApp()->getUndergrad()->getSurname());
+		yearEntry.set_text(Tools::floatToString(n->data->getUndergrad()->getYear()));
+		cgpaEntry.set_text(Tools::floatToString(n->data->getUndergrad()->getCGPA()));
+		mgpaEntry.set_text(Tools::floatToString(n->data->getUndergrad()->getMGPA()));
 
-		   text = manager->getCurrUGradApp()->getUndergrad()->getEmail();
-		   emailName = text.substr(0, text.find("@"));
-		   emailDomain = text.substr(text.find("@"));
+		// Add widgets to table
+		appTable.attach(courseCombo, 1, 2, 1, 2);
+		appTable.attach(stuNumEntry, 1, 3, 2, 3);
+		appTable.attach(nameEntry, 1, 3, 3, 4);
+		appTable.attach(surnameEntry, 1, 3, 4, 5);
+		appTable.attach(emailEntry, 1, 2, 5, 6);
+		appTable.attach(emailCombo, 2, 3, 5, 6);
+		appTable.attach(majorCombo, 1, 3, 6, 7);
+		appTable.attach(yearEntry, 1, 3, 7, 8);
+		appTable.attach(cgpaEntry, 1, 3, 8, 9);
+		appTable.attach(mgpaEntry, 1, 3, 9, 10);
+		appTable.attach(backButton, 1, 2, 10, 11);
+		appTable.attach(nextButton, 2, 3, 10, 11);
+		scrolledWindow.add(appTable);
 
-		   emailEntry.set_text(emailName);
-		   if (emailDomain == "@cmail.carleton.ca")
-		   emailCombo.set_active(0);
-		   else
-		   emailCombo.set_active(1);
-
-		   aMajor = manager->getCurrUGradApp()->getUndergrad()->getMajor();
-		   for (i=0; i<count; i++) {
-		   if (majors[i] == aMajor) {
-		   majorCombo.set_active(i);
-		   break;
-		   }
-		   }
-
-		   yearEntry.set_text(Tools::floatToString(manager->getCurrUGradApp()->getUndergrad()->getYear()));
-		   cgpaEntry.set_text(Tools::floatToString(manager->getCurrUGradApp()->getUndergrad()->getCGPA()));
-		   mgpaEntry.set_text(Tools::floatToString(manager->getCurrUGradApp()->getUndergrad()->getMGPA()));
-		 */ }
-		   else {
-			   emailCombo.set_active(0);
-			   majorCombo.set_active(0);
-		   }
-
-		   // Add widgets to table
-		   appTable.attach(courseCombo, 1, 2, 1, 2);
-		   appTable.attach(stuNumEntry, 1, 3, 2, 3);
-		   appTable.attach(nameEntry, 1, 3, 3, 4);
-		   appTable.attach(surnameEntry, 1, 3, 4, 5);
-		   appTable.attach(emailEntry, 1, 2, 5, 6);
-		   appTable.attach(emailCombo, 2, 3, 5, 6);
-		   appTable.attach(majorCombo, 1, 3, 6, 7);
-		   appTable.attach(yearEntry, 1, 3, 7, 8);
-		   appTable.attach(cgpaEntry, 1, 3, 8, 9);
-		   appTable.attach(mgpaEntry, 1, 3, 9, 10);
-		   appTable.attach(backButton, 1, 2, 10, 11);
-		   appTable.attach(nextButton, 2, 3, 10, 11);
-		   scrolledWindow.add(appTable);
-
-		   // Widget action listeners
-		   nextButton.signal_clicked().connect(
-				   sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_nextButton), "Next") );
-		   backButton.signal_clicked().connect(
-				   sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_backButton), "Back") );
-
-		   show_all_children();
-
-		   //cout << "CONSTRUCT StuAppEditUI" << endl;
+		// Widget action listeners
+		nextButton.signal_clicked().connect(
+				sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_nextButton), "Next") );
+		backButton.signal_clicked().connect(
+				sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_backButton), "Back") );
+	
+	show_all_children();
+	}//cout << "CONSTRUCT StuAppEditUI" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -202,6 +195,17 @@ void StuAppEditUI::errorDialog(){
 }
 
 //////////////////////////////////////////////////////////////////////////
+// Display file not found dialog
+void StuAppEditUI::noApplicationDialog(){
+		Gtk::MessageDialog dialog(*this, "ERROR!"); 
+		dialog.set_secondary_text(
+				"Application number not found. Returning to previous screen."); 
+		dialog.run();
+	cout<<"noAppDiag"<<endl;
+	//onQuit();
+}
+
+//////////////////////////////////////////////////////////////////////////
 // Event handler for next button
 void StuAppEditUI::on_nextButton(const Glib::ustring& data) {
 	if (validEntries()) {
@@ -233,7 +237,12 @@ void StuAppEditUI::on_nextButton(const Glib::ustring& data) {
 // Event handler for back button
 void StuAppEditUI::on_backButton(const Glib::ustring& data) {
 	manager->cancelApp();
-	StuOptionUI* stuOptWin = new StuOptionUI(manager); 
-	stuOptWin->show();  
+	onQuit();
+}
+
+void StuAppEditUI::onQuit(){
+	cout<<"onquit"<<endl;
+	//StudentNumberUI* stuNumWin = new StudentNumberUI(manager, false); 
+	//stuNumWin->show();  
 	delete this;
 }

@@ -10,7 +10,7 @@
 
 class StuAppEditUI : public Gtk::Dialog {
 	public:
-		StuAppEditUI(Manager*,bool, int);
+		StuAppEditUI(Manager*,bool*, int);
 		~StuAppEditUI();
 
 		Manager*  manager;
@@ -19,9 +19,11 @@ class StuAppEditUI : public Gtk::Dialog {
 		int  isEmpty();
 		int  validEntries();
 		void errorDialog();
+		void noApplicationDialog();
 		void on_nextButton(const Glib::ustring& data);
 		void on_backButton(const Glib::ustring& data);
 		int appNumber;
+		void onQuit();
 		Gtk::Table          appTable;
 		Gtk::Label          label;
 		Gtk::Label* 	aLabel;

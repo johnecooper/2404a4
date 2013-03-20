@@ -44,8 +44,11 @@ StudentNumberUI::~StudentNumberUI() {
 // Event handler for student button
 void StudentNumberUI::on_nextButton(const Glib::ustring& data){
   int i = atoi(stuNumberEntry.get_text().c_str()); 
-  StuAppEditUI* stuEditWin = new StuAppEditUI(manager,false,i);
-  stuEditWin->show();
+  bool * rpt = new bool;
+  StuAppEditUI* stuEditWin = new StuAppEditUI(manager,rpt,i);
+  if(*rpt){
+	  stuEditWin->show();
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////

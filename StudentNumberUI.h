@@ -12,7 +12,6 @@ class StudentNumberUI : public Gtk::Window {
 	private:
 		void on_nextButton(const Glib::ustring& data);
 		void on_backButton(const Glib::ustring& data);
-		
 		Gtk::Table aTable;
 		Gtk::Label aTitle;
 		Gtk::Entry stuNumberEntry;
