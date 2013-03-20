@@ -31,16 +31,8 @@ class Application {
 		void   setTACrsQueue(TACourseQueue*);
 		void   setWorkExpQueue(WorkExpQueue*);
 		void   print() const;
-		Application operator-(){
-			Application app;
-			app.setStatus(CLOSED);
-			return app;
-		}
-		Application operator+(){
-			Application app;
-			app.setStatus(ACCEPTED);
-			return app;
-		}
+		Application operator-();		
+		Application operator+();
 	private:
 		Course*       course;
 		Status        status;

@@ -6,7 +6,7 @@
 #include "StuAppFormUI.h"
 #include "WelcomeUI.h"
 #include "GradAppFormUI.h"
-
+#include "StudentNumberUI.h"
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 StuOptionUI::StuOptionUI(Manager* aManager) 
@@ -86,5 +86,23 @@ void StuOptionUI::on_createButton(const Glib::ustring& data){
 // Event handler for the edit button
 void StuOptionUI::on_editButton(const Glib::ustring& data){
   createButton.set_sensitive(true);
-  cout << "StuOptionUI window -- Edit button was pressed" << endl;
+  //cout << "StuOptionUI window -- Edit button was pressed" << endl;
+  if (m_Combo.get_active_text() == "Undergraduate"){
+    createButton.set_sensitive(false);
+    //manager->makeNewUGradApp();
+    //StuAppFormUI* stuFormWin = new StuAppFormUI(manager, 0);
+    StudentNumberUI* studentNumberUI = new StudentNumberUI(manager,0);
+    studentNumberUI->show();  
+    delete this;
+  }
+  else if (m_Combo.get_active_text() == "Graduate"){
+    createButton.set_sensitive(false);
+    manager->makeNewGradApp();
+    //GradAppFormUI* gradFormWin = new GradAppFormUI(manager, 0);
+    //gradFormWin->show();  
+    StudentNumberUI* studentNumberUI = new StudentNumberUI(manager,0);
+    studentNumberUI->show();  
+
+    delete this;
+  }
 }

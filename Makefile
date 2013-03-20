@@ -1,6 +1,6 @@
-OBJ = AcceptAppUI.o AdminOptionUI.o AllPendingUI.o Application.o Course.o CourseInfoUI.o CourseQueue.o GenInfo.o GradApp.o GradAppFormUI.o GradAppQueue.o GradInfoQueue.o Graduate.o main.o Manager.o OnePendingUI.o SelectCrsUI.o StuAppFormUI.o StuOptionUI.o SubmitAppUI.o TACourse.o TACourseQueue.o TakenCourseQueue.o TakenCourse.o Tools.o UGradInfoQueue.o UGradApp.o UGradAppQueue.o Undergraduate.o WelcomeUI.o WorkExp.o WorkExpQueue.o WorkExpUI.o
+OBJ = AcceptAppUI.o AdminOptionUI.o AllPendingUI.o Application.o Course.o CourseInfoUI.o CourseQueue.o GenInfo.o GradApp.o GradAppFormUI.o GradAppQueue.o GradInfoQueue.o Graduate.o main.o Manager.o OnePendingUI.o SelectCrsUI.o StuAppFormUI.o StuOptionUI.o SubmitAppUI.o TACourse.o TACourseQueue.o TakenCourseQueue.o TakenCourse.o Tools.o UGradInfoQueue.o UGradApp.o UGradAppQueue.o Undergraduate.o WelcomeUI.o WorkExp.o WorkExpQueue.o WorkExpUI.o StudentNumberUI.o
 
-CPPFILES = AcceptAppUI.cpp AdminOptionUI.cpp AllPendingUI.cpp Application.cpp Course.cpp CourseInfoUI.cpp CourseQueue.cpp GenInfo.cpp GradApp.cpp GradAppFormUI.cpp GradAppQueue.cpp GradInfoQueue.cpp Graduate.cpp main.cpp Manager.cpp OnePendingUI.cpp SelectCrsUI.cpp StuAppFormUI.cpp StuOptionUI.cpp SubmitAppUI.cpp TACourse.cpp TACourseQueue.cpp TakenCourseQueue.cpp TakenCourse.cpp Tools.cpp UGradInfoQueue.cpp UGradApp.cpp UGradAppQueue.cpp Undergraduate.cpp WelcomeUI.cpp WorkExp.cpp WorkExpQueue.cpp WorkExpUI.cpp
+CPPFILES = AcceptAppUI.cpp AdminOptionUI.cpp AllPendingUI.cpp Application.cpp Course.cpp CourseInfoUI.cpp CourseQueue.cpp GenInfo.cpp GradApp.cpp GradAppFormUI.cpp GradAppQueue.cpp GradInfoQueue.cpp Graduate.cpp main.cpp Manager.cpp OnePendingUI.cpp SelectCrsUI.cpp StuAppFormUI.cpp StuOptionUI.cpp SubmitAppUI.cpp TACourse.cpp TACourseQueue.cpp TakenCourseQueue.cpp TakenCourse.cpp Tools.cpp UGradInfoQueue.cpp UGradApp.cpp UGradAppQueue.cpp Undergraduate.cpp WelcomeUI.cpp WorkExp.cpp WorkExpQueue.cpp WorkExpUI.cpp StudentNumberUI.cpp
 
 TXT = majors.txt lastAppNum.txt courses.txt info.txt date.txt faculty.txt research.txt Applications AppSummaries
 
@@ -106,6 +106,10 @@ WorkExpQueue.o:	WorkExpQueue.cpp WorkExpQueue.h
 
 WorkExpUI.o:	WorkExpUI.cpp WorkExpUI.h
 		g++ -c WorkExpUI.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
+StudentNumberUI.o:	StudentNumberUI.cpp StudentNumberUI.h
+		g++ -c StudentNumberUI.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
 
 clean:
 		rm -f *.o cutaes
