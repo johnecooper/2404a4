@@ -22,15 +22,22 @@ class WorkExpQueue {
     WorkExpQueue();
     WorkExpQueue(WorkExpQueue&);
     ~WorkExpQueue();
+
+    WorkExp*          operator[](int);
+    void              operator+=(WorkExp*);
+    void              operator+=(WorkExpQueue&);
+    WorkExpQueue      operator+();
     
-    void  operator+=(WorkExp*);
-    void  pushBack(WorkExp*);
-    bool  popFront();
-    Node* front();
-    bool  empty();
-    void  clear();
-    int   size()  const;
-    void  print() const;
+    void              operator!();
+    
+    
+    void      pushBack(WorkExp*);
+    bool      popFront();
+    Node*     front();
+    bool      empty();
+    void      clear();
+    int       size()  const;
+    void      print() const;
     
   private:
     Node* head;

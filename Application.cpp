@@ -46,6 +46,18 @@ void Application::setCourse(Course* crs)                  { course = crs;       
 void Application::setTACrsQueue(TACourseQueue* tacq)      { tACrsQueue = tacq;   }
 void Application::setWorkExpQueue(WorkExpQueue* weq)      { workExp = weq;       }
 
+//////////////////////////////////////////////////////////////////////////
+// Overloaded Operators
+void Application::operator+ ()
+{
+  setStatus(ACCEPTED);
+}
+
+void Application::operator- ()
+{
+  setStatus(CLOSED);
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 // Prints out an application

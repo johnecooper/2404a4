@@ -46,9 +46,50 @@ WorkExpQueue::~WorkExpQueue() {
  //cout << "DESTRUCT WorkExpQueue" << endl;
 }
 
+//////////////////////////////////////////////////////////////////////////
+// Overloaded Operators
+
+WorkExp* WorkExpQueue::operator[](int index)
+{
+  if (head == 0)
+    return 0;
+  Node* currNode = head;
+  for(int i = 0; i < index; i++)
+  {
+    currNode = currNode->next;
+    if(currNode == 0)
+      return 0;
+  }
+  return currNode->data;
+}
+
 void WorkExpQueue::operator+=(WorkExp* w)
 {
   pushBack(w);
+}
+
+void WorkExpQueue::operator+=(WorkExpQueue& q)
+{
+  if (head == 0)
+  {
+    head = q.head;
+    return;
+  }
+  Node* currNode = head;
+  while(currNode!=0)
+  {
+    if(currNode->next == 0)
+    {
+      currNode->next == q.head;
+      return;
+    }
+    currNode = currNode->next;
+  }
+}
+
+void WorkExpQueue::operator!()
+{
+  clear();
 }
 
 //////////////////////////////////////////////////////////////////////////
