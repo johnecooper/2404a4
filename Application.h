@@ -31,8 +31,8 @@ class Application {
 		void   setTACrsQueue(TACourseQueue*);
 		void   setWorkExpQueue(WorkExpQueue*);
 		void   print() const;
-		Application operator-();		
-		Application operator+();
+		void operator-();		
+		void operator+();
 	private:
 		Course*       course;
 		Status        status;
