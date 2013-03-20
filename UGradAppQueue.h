@@ -10,10 +10,12 @@ class UGradApp;
 class UGradAppQueue {
   friend class OnePendingUI;
   friend class AllPendingUI;
+  friend class StuAppEditUI;
   class Node{
     friend class UGradAppQueue;
     friend class OnePendingUI;
     friend class AllPendingUI;
+    friend class StuAppEditUI;
     private:
       UGradApp*  data;
       Node*      next;

@@ -3,19 +3,19 @@
 // Prompts the user to enter their student number
 
 #include "StudentNumberUI.h"
-
+#include "StuAppEditUI.h"
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 StudentNumberUI::StudentNumberUI(Manager* aManager, bool) 
 : aTable(4,2,false),
-  aTitle("Enter your student number "),
+  aTitle("Enter your application number:"),
   nextButton("Enter"),
   backButton("Back")
 {
   manager = aManager;
 
   set_default_size(500, 350);
-  set_title("Student Number Text");
+  set_title("Application Number Text");
   set_position(Gtk::WIN_POS_CENTER_ALWAYS);
   
   add(aTable);
@@ -42,9 +42,10 @@ StudentNumberUI::~StudentNumberUI() {
 
 //////////////////////////////////////////////////////////////////////////
 // Event handler for student button
-void StudentNumberUI::on_nextButton(const Glib::ustring& data){ 
- // StuOptionUI* stuOptWin = new StuOptionUI(manager);
- // stuOptWin->show(); 
+void StudentNumberUI::on_nextButton(const Glib::ustring& data){
+  int i = atoi(stuNumberEntry.get_text().c_str()); 
+  StuAppEditUI* stuEditWin = new StuAppEditUI(manager,false,i);
+  stuEditWin->show();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -52,5 +53,6 @@ void StudentNumberUI::on_nextButton(const Glib::ustring& data){
 void StudentNumberUI::on_backButton(const Glib::ustring& data){
  // AdminOptionUI* adminWin = new AdminOptionUI(manager);
  // adminWin->show();
+  delete this;
 }
 

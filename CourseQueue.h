@@ -11,6 +11,7 @@
 class CourseQueue {
   friend class SelectCrsUI;
   friend class StuAppFormUI;
+  friend class StuAppEditUI;
   friend class GradAppFormUI;
   friend class CourseInfoUI;
   friend class Manager;
@@ -22,6 +23,7 @@ class CourseQueue {
     friend class CourseQueue;
     friend class SelectCrsUI;
     friend class StuAppFormUI;
+    friend class StuAppEditUI;
     friend class GradAppFormUI;
     friend class CourseInfoUI;
     friend class Manager;
