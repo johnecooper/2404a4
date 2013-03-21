@@ -83,7 +83,7 @@ void WorkExpQueue::operator+=(WorkExpQueue& q)
       currNode = q.head;
       while(currNode!=0)
       {
-        pushBack(currNode);
+        pushBack(currNode->data);
         currNode = currNode->next;
       }
       return;
