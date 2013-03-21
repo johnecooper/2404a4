@@ -55,12 +55,16 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 	// Courses combo box
 	// Iterate through course queue and put names into comboBox
 	CourseQueue::Node* currNode = manager->getCourseQueue()->front();
-
+	int num=0;
+	UGradAppQueue::Node * n = (manager->getUGradApps()->front());
 	while (currNode != 0){ 
 		courseCombo.append(currNode->data->getName());
+		if((currNode->data->getName()) == (n->data->getCourse()->getName())){
+			courseCombo.set_active(num);
+		}
+		num++;
 		currNode = currNode->next;
 	}
-	courseCombo.set_active(0);
 
 	// Fill in Major combo box from file
 	string majors[350];
@@ -74,11 +78,10 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 		count++;
 	}
 
-	for (i=0; i<(count); i++) 
+	for (i=0; i<(count); i++)
 		majorCombo.append(majors[i]);
 
 	//Recall the application information
-	UGradAppQueue::Node * n = (manager->getUGradApps()->front());
 	bool found=false;
 	cout<<"Searching for:"<<appNumber<<endl;
 	while(n->next != 0){

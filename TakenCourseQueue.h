@@ -10,10 +10,12 @@
 
 class TakenCourseQueue {
   friend class Manager;
+  friend class CourseEditUI;
   class Node{
     friend class TakenCourseQueue;
     private:
       friend class Manager;
+      friend class CourseEditUI;
       TakenCourse* data;
       Node*   next;
   };

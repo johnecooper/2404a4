@@ -12,7 +12,7 @@
 #include "UGradApp.h"
 #include "GradApp.h"
 #include "TACourseQueue.h"
-
+using namespace std;
 //////////////////////////////////////////////////////////////////////////
 // Constructor
 CourseEditUI::CourseEditUI(Manager* aManager, int i, UGradAppQueue::Node* n) 
@@ -25,6 +25,11 @@ CourseEditUI::CourseEditUI(Manager* aManager, int i, UGradAppQueue::Node* n)
 	node(n),
 	courseQueue(n->data->getTakenCrsQueue())
 {
+	yearComboList = new string[MAX_BUF];
+	courseComboList = new string[MAX_BUF];
+	gradeComboList = new string[13];
+	termComboList = new string[3];
+	//test = new string[MAX_BUF];
 	whichCourse = i;
 	initWindow(aManager);
 }
@@ -32,8 +37,9 @@ CourseEditUI::CourseEditUI(Manager* aManager, int i, UGradAppQueue::Node* n)
 //////////////////////////////////////////////////////////////////////////
 // Makes the window according to whichCourse
 void CourseEditUI::initWindow(Manager* aManager) {
+	cout<<"Wotcher!:"<<courseQueue->front()->data->getName()<<":"<<endl;
 	manager = aManager;
-
+	
 	set_default_size(500, 350);
 	set_title("cuTAES");
 	set_modal(true);
@@ -52,9 +58,9 @@ void CourseEditUI::initWindow(Manager* aManager) {
 	}
 
 	//Read from file using getline function
-	string  termComboList[3];
-	string  yearComboList[MAX_BUF];
-	string  gradeComboList[13];
+//	string  termComboList[3];
+//	string  yearComboList[MAX_BUF];
+//	string  gradeComboList[13];
 	string  superComboList[MAX_BUF];
 	string  info[MAX_BUF];
 	int    count = 0;
@@ -67,20 +73,22 @@ void CourseEditUI::initWindow(Manager* aManager) {
 		getline(infile, info[count]);
 		count++;
 	}
-
+        int n=0;
 	//Fill in courses combo
 	// Iterate through course queue and put names into comboBox
 
 	CourseQueue::Node* currNode = manager->getCourseQueue()->front();
 	while (currNode != 0){ 
 		courseCombo.append(currNode->data->getName());
+		courseComboList[n]=currNode->data->getName();
+		n++;
 		currNode = currNode->next;
 	}
 	courseCombo.set_active(0);
 
 	//Fill the combo
 	int i;
-	int n=0;
+	n=0;
 	for (i=0; i<(count-1); i++){
 		if(info[i] != "~"){
 			termCombo.append(info[i]);
@@ -120,10 +128,11 @@ void CourseEditUI::initWindow(Manager* aManager) {
 			finalCombo.append(superComboList[i]);
 	}
 
+	
 	termCombo.set_active(0);
 	yearCombo.set_active(0);
 	finalCombo.set_active(0);
-
+refresh();
 	createTable.attach(aLabel, 0, 2, 0, 1, Gtk::FILL,Gtk::FILL, 0, 42);
 	createTable.attach(courseCombo, 2, 3, 0, 1, Gtk::FILL,Gtk::FILL, 10, 30);
 
@@ -256,5 +265,43 @@ void CourseEditUI::on_courseButton(const Glib::ustring& data){
 
 }
 
-void CourseEditUI::on_firstCourseButton(const Glib::ustring& data){} 
-void CourseEditUI::on_nextCourseButton(const Glib::ustring& data){}
+void CourseEditUI::on_firstCourseButton(const Glib::ustring& data){
+//	qNode=courseQueue->front();
+}
+void CourseEditUI::on_nextCourseButton(const Glib::ustring& data){
+//if(qNode->next != 0){
+//	qNode = qNode->next;
+//}
+//else{
+//qNode = courseQueue->front();
+//}
+}
+void CourseEditUI::refresh(){
+	int i;
+
+	for(i=0;i<3;i++){
+		if(termComboList[i]==courseQueue->front()->data->getTerm()){
+			termCombo.set_active(i);
+			break;
+		}
+	}
+	for(i=0;i<13;i++){
+		if(gradeComboList[i]==courseQueue->front()->data->getFinalGrade()){
+			finalCombo.set_active(i);
+			break;
+		}
+	}
+for(i=0;i<MAX_BUF;i++){
+		
+		if(courseComboList[i]==courseQueue->front()->data->getName()){
+			courseCombo.set_active(i);
+			break;
+		}
+	}
+for(i=0;i<MAX_BUF;i++){
+		if(yearComboList[i]==courseQueue->front()->data->getYear()){
+			yearCombo.set_active(i);
+			break;
+		}
+	}
+}

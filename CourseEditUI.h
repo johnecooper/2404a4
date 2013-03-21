@@ -4,7 +4,6 @@
 
 #ifndef COURSEEDITUI_H
 #define COURSEEDITUI_H
-
 #include <gtkmm.h>
 
 #include "Types.h"
@@ -12,13 +11,14 @@
 #include "TACourse.h"
 #include "UGradAppQueue.h"
 #include "TakenCourseQueue.h"
+#include <iostream>
+#include <string>
+using namespace std;
 class CourseEditUI : public Gtk::Window {
   public:
     CourseEditUI(Manager*, int, UGradAppQueue::Node*);
     ~CourseEditUI();
-
     Manager*  manager;
-
     // 0 = TakenCourse
     // 1 = TACourse
     int whichCourse;
@@ -30,8 +30,14 @@ class CourseEditUI : public Gtk::Window {
     void on_backButton(const Glib::ustring& data);
     void on_courseButton(const Glib::ustring& data);
     void on_firstCourseButton(const Glib::ustring& data);
+    void refresh();
     void on_nextCourseButton(const Glib::ustring& data);
     TakenCourseQueue * courseQueue;
+    string * courseComboList;
+    string * yearComboList;
+    string * gradeComboList;
+    string * termComboList;
+    //TakenCourseQueue::Node * qNode; 
     // Widgets
     Gtk::Table         createTable;
     Gtk::Label         aLabel, yearLabel, termLabel, finalLabel;
