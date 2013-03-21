@@ -89,7 +89,7 @@ void StuOptionUI::on_editButton(const Glib::ustring& data){
   //cout << "StuOptionUI window -- Edit button was pressed" << endl;
   if (m_Combo.get_active_text() == "Undergraduate"){
     createButton.set_sensitive(false);
-    //manager->makeNewUGradApp();
+    manager->makeNewUGradApp();
     //StuAppFormUI* stuFormWin = new StuAppFormUI(manager, 0);
     StudentNumberUI* studentNumberUI = new StudentNumberUI(manager,0);
     studentNumberUI->show();  

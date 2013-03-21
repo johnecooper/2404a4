@@ -23,6 +23,7 @@ class Tools {
     static int  validEmail(string anEmail);
     static int  validNumber(string aNum);
     static int  validGPA(string aGPA);
+    static int  getIndexOf(string[],string,int);
 };
 
 #endif
