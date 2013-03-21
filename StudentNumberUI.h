@@ -3,7 +3,7 @@
 
 #include "Types.h"
 #include <gtkmm.h>
-
+ 
 class StudentNumberUI : public Gtk::Window {
 	public:
 		StudentNumberUI ( Manager*, bool);
