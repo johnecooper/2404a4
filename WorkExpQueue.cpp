@@ -24,7 +24,8 @@ WorkExpQueue::WorkExpQueue(WorkExpQueue& oldQueue)
 
   while (currNode != 0){
     Node* newNode = new Node;
-    newNode->data = currNode->data;
+    newNode->data = new WorkExp(0);
+    *(newNode->data) = *(currNode->data);
     newNode->next = 0;
 
     if (!head) {
@@ -36,14 +37,14 @@ WorkExpQueue::WorkExpQueue(WorkExpQueue& oldQueue)
     }
     currNode = currNode->next;
   }
- //cout << "COPY CONSTRUCT WorkExpQueue" << endl;
+ cout << "COPY CONSTRUCT WorkExpQueue" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 WorkExpQueue::~WorkExpQueue() {
-  clear();
- //cout << "DESTRUCT WorkExpQueue" << endl;
+ //clear();
+ cout << "DESTRUCT WorkExpQueue" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -63,50 +64,40 @@ WorkExp* WorkExpQueue::operator[](int index)
   return currNode->data;
 }
 
-void WorkExpQueue::operator+=(WorkExp* w)
+WorkExpQueue& WorkExpQueue::operator+=(WorkExp* w)
 {
   pushBack(w);
+  return *this;
 }
 
-void WorkExpQueue::operator+=(WorkExpQueue& q)
+WorkExpQueue& WorkExpQueue::operator+=(WorkExpQueue& q)
 {
-  if (head == 0)
+  if(q.head == 0)
   {
-    head = q.head;
-    return;
+    return *this;
   }
-  Node* currNode = head;
+  Node* currNode = q.head;
   while(currNode!=0)
   {
-    if(currNode->next = 0)
-    {
-      currNode = q.head;
-      while(currNode!=0)
-      {
-        pushBack(currNode->data);
-        currNode = currNode->next;
-      }
-      return;
-    }
-  currNode = currNode->next;
+    pushBack(currNode->data);
+    currNode = currNode->next;
   }
+  return *this;
 }
 
 WorkExpQueue WorkExpQueue::operator+(WorkExp* w)
 {
-  WorkExpQueue tempQueue;
-  WorkExpQueue& t = *this;
-  tempQueue.operator+=(t);
+  WorkExpQueue tempQueue = *this;
   tempQueue.operator+=(w);
+  tempQueue.print();
   return tempQueue;
 }
 
 WorkExpQueue WorkExpQueue::operator+(WorkExpQueue& q)
 {
-  WorkExpQueue tempQueue;
-  WorkExpQueue& t = *this;
-  tempQueue.operator+=(t);
+  WorkExpQueue tempQueue = *this;
   tempQueue.operator+=(q);
+  tempQueue.print();
   return tempQueue;
 }
 
@@ -116,28 +107,35 @@ void WorkExpQueue::operator-=(WorkExp* w)
     return;
   Node *currNode = head;
   Node *tempNode = new Node;
-  
-  while(!(currNode->data == w) && currNode != 0)
-  {
-    if(currNode == head && (currNode->data) == w)
+  if((currNode->data) == w)
       {
+ 	std::cout<<"Head!"<<endl;
         tempNode = currNode;
         currNode = currNode->next;
         head = currNode;
         delete tempNode->data;
         delete tempNode;
+	std::cout<<"Data at the Head is gone!"<<endl;
         return;
-      }
+      }  
+  
+  while(currNode->next != 0)
+  {
+    std::cout<<"While!"<<endl;
     if((currNode->next->data) == w)
     {
+      std::cout<<"Middle!"<<endl;
       tempNode = currNode->next;
       currNode->next = tempNode->next;
       delete tempNode->data;
       delete tempNode;
+      std::cout<<"Data in the middle is gone!"<<endl;
       return;
     }
+    std::cout<<"Forward!"<<endl;
     currNode = currNode->next;
   }
+  std::cout<<"Data not found!"<<endl;
 }
 
 void WorkExpQueue::operator-=(WorkExpQueue& q)
@@ -273,7 +271,7 @@ void WorkExpQueue::print() const {
 
   std::cout << "WORK EXP:" <<endl;
   while (currNode != 0) {
-    std::cout << "   " << currNode->data->getStart() << endl;
+    currNode->data->print();
     currNode = currNode->next;
   }
 }

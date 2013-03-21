@@ -22,6 +22,7 @@ WorkExp::WorkExp(Manager* aManager) {
 // Destructor
 WorkExp::~WorkExp() {
   cout << "DESTRUCT WorkExp" << endl;
+  print();
 }
 
 //////////////////////////////////////////////////////////////////////////

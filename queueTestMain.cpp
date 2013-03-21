@@ -1,356 +1,134 @@
 #include "WorkExp.cpp"
 #include "WorkExpQueue.cpp"
 #include <iostream>
+#include <string>
 #include "string.h"
 #include <sstream>
 
+#include "WorkExpQueue.h"
+
 #define VERBOSE
 
-//class WorkExp;
-//class WorkExpQueue;
+class WorkExp;
+class WorkExpQueue;
 class Node;
 using namespace std;
 
-
-bool testSubsriptOperator();
-bool testAdditionAssignmentOperator1();
-bool testAdditionAssignmentOperator2();
-bool testAdditionOperator1();
-bool testAdditionOperator2();
-bool testSubtractionAssignmentOperator1();
-bool testSubtractionAssignmentOperator2();
-bool testSubtractionOperator1();
-bool testSubtractionOperator2();
-bool testLogicalNotOperator();
-
-void dataInc();
-void dataReset();
-void getNewWorkExp(WorkExp*);
-string intToString(int); 
-
-int data1=0, data2=0, data3=0, data4=0;
-
-
 int main(){
-#ifdef VERBOSE
-	cout<<""<<endl;
-#endif	
-	WorkExp* e1=new WorkExp(0);
-	getNewWorkExp(e1);
+	WorkExp* e1 = new WorkExp(0);
+	(*e1).setDataMembers("1", "1", "1");
+	WorkExp*e0 = new WorkExp(0);
+	(*e0).setDataMembers("A", "A", "A");
 	(*e1).print();
-	getNewWorkExp(e1);
-	(*e1).print();
-
-	return 1;
-}
-
-bool testSubsriptOperator(){
-#ifdef VERBOSE
-	cout<<"Testing Subscipt Operator"<<endl;
-#endif
-	bool flag=false;
-	WorkExp* e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp* e2= new WorkExp(0);
-	getNewWorkExp(e2);
+	WorkExp*e2 = new WorkExp(0);
+	(*e2).setDataMembers("2", "2", "2");
+	(*e2).print();
 	WorkExpQueue queue;	
+	WorkExpQueue newQueue;
+	WorkExpQueue newerQueue;
 	queue.pushBack(e1);
-	/*if(!(queue[0]==e1){flag=true;
-#ifdef VERBOSE
-cout<<"Subscript failed on 1 object list."<<endl;
-#endif
-}*/
-	queue.pushBack(e2);	
-	/*if(!(queue[1]==e1||!(queue[2]==e2){
-	  flag=true;
-#ifdef VERBOSE
-cout<<"Subscript failed on 2 object list."<<endl;
-#endif
-}
-	 */
-
-
-	return !flag;
-	}
-
-bool testAdditionAssignmentOperator1(){
-#ifdef VERBOSE
-	cout<<"Testing Addition Assignment Operator 1"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExpQueue queue;	
-
-	//queue+=e1;
-	/*if(!(queue[0]==e1||queue.size()==1){flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator failed on adding to empty list."<<endl;
-#endif
-}*/
-	queue.pushBack(e2);	
-	//queue+=e2;
-	/*if(!(queue.popFront()==eq||queue.popFront()==e2||queue.size()==2){flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator failed on adding to populated list."<<endl;
-#endif
-	 */
-	return !flag;
-	}
-
-bool testAdditionAssignmentOperator2(){
-#ifdef VERBOSE
-	cout<<"Testing Addition Assignment Operator 2"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExp * e3= new WorkExp(0);
-	getNewWorkExp(e3);
-	WorkExp * e4= new WorkExp(0);
-	getNewWorkExp(e4);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-	WorkExpQueue queue2;
-	queue2.pushBack(e3);
-	queue2.pushBack(e4);
-
-	//queue+=queue2;
-	/*if(!(queue[0]==e1||queue[1]==e2||queue[2]==e3||queue[3]==e4||queue.size()==4){
-	  flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator 2 to maintain item integrity."<<endl;
-#endif
-}*/
-	return !flag;
-	}
-
-bool testAdditionOperator1(){
-#ifdef VERBOSE
-	cout<<"Testing Addition Assignment Operator 1"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExpQueue queue;	
-
-	//queue+e1;
-	/*if(!(queue[0]==e1||queue.size()==1){flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator failed on adding to empty list."<<endl;
-#endif
-}*/
-	queue.pushBack(e2);	
-	//queue+e2;
-	/*if(!(queue.popFront()==eq||queue.popFront()==e2||queue.size()==2){flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator failed on adding to populated list."<<endl;
-#endif
-	 */
-	return !flag;	
-}
-
-bool testAdditionOperator2(){
-#ifdef VERBOSE
-	cout<<"Testing Addition Assignment Operator 2"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExp * e3= new WorkExp(0);
-	getNewWorkExp(e3);
-	WorkExp * e4= new WorkExp(0);
-	getNewWorkExp(e4);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-	WorkExpQueue queue2;
-	queue2.pushBack(e3);
-	queue2.pushBack(e4);
-
-	//queue+queue2;
-	/*if(!(queue[0]==e1||queue[1]==e2||queue[2]==e3||queue[3]==e4||queue.size()==4){
-	  flag=true;
-#ifdef VERBOSE
-cout<<"Addition Assignment Operator 2 to maintain item integrity."<<endl;
-#endif
-}*/
-	return !flag;
-	}
-
-bool testSubtractionAssignmentOperator1(){
-#ifdef VERBOSE
-	cout<<"Testing Subtraction Assignment Operator 1"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-
-	//queue-=e1;
-	/*if(!(queue[0]==e2||queue.size()==1){flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Assignment Operator failed on subtracting from poplulated."<<endl;
-#endif
-}*/
+	newQueue.pushBack(e0);
+	cout<< " newQueue" << endl;
+	newQueue.print();
 	
-	//queue-=e2;
-	/*if(!(queue.size()==0){flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Assignment Operator failed on subtracting last item."<<endl;
-#endif
-	 */
-	return !flag;
-	}
-
-bool testSubtractionAssignmentOperator2(){
-#ifdef VERBOSE
-	cout<<"Testing Subtraction Assignment Operator 2"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExp * e3= new WorkExp(0);
-	getNewWorkExp(e3);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-	queue.pushBack(e3);
-	WorkExpQueue queue2;
-	queue2.pushBack(e1);
-	queue2.pushBack(e3);
-
-	//queue-=queue2;
-	/*if(!(queue[0]==e2||queue.size()==1){
-	  flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Assignment Operator 2 failed."<<endl;
-#endif
-}*/
-	return !flag;
-	}
-bool testSubtractionOperator1(){
-#ifdef VERBOSE
-	cout<<"Testing Subtraction Operator 1"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-
-	//queue-e1;
-	/*if(!(queue[0]==e2||queue.size()==1){flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Assignment Operator failed on subtracting from poplulated."<<endl;
-#endif
-}*/
 	
-	//queue-e2;
-	/*if(!(queue.size()==0){flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Assignment Operator failed on subtracting last item."<<endl;
-#endif
-	 */
-	return !flag;
+		cout << "Test [] " << endl;
+	if (queue.size() > 0){
+			queue.print();
+		queue.pushBack(e2);
+			queue.print();
 	}
 
-bool testSubtractionOperator2(){
-#ifdef VERBOSE
-	cout<<"Testing Subtraction Operator 2"<<endl;
-#endif
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-	getNewWorkExp(e1);
-	WorkExp * e2= new WorkExp(0);
-	getNewWorkExp(e2);
-	WorkExp * e3= new WorkExp(0);
-	getNewWorkExp(e3);
-	WorkExpQueue queue;
-	queue.pushBack(e1);
-	queue.pushBack(e2);
-	queue.pushBack(e3);
-	WorkExpQueue queue2;
-	queue2.pushBack(e1);
-	queue2.pushBack(e3);
 
-	//queue-queue2;
-	/*if(!(queue[0]==e2||queue.size()==1){
-	  flag=true;
-#ifdef VERBOSE
-cout<<"Subtraction Operator 2 failed."<<endl;
-#endif
-}*/
-	return flag;
-	}
-bool testLogicalNotOperator(){
-	bool flag=false;
-	WorkExp * e1= new WorkExp(0);
-        getNewWorkExp(e1);
-        WorkExp * e2= new WorkExp(0);
-        getNewWorkExp(e2);
-        WorkExpQueue queue;
-//!queue
-if(!(queue.size()==0)){
-	flag=true;
+		cout << "Test += element" << endl;
+		WorkExp* e3 = new WorkExp(0);
+		(*e3).setDataMembers("3", "3", "3");
+		queue+=e3;
+		queue.print();
+	
+		WorkExp* e4 = new WorkExp(0);
+		(*e4).setDataMembers("4", "4", "4");
+		queue.pushBack(e4);
+		queue.print();
+
+		cout << "Test += 2 queues" << endl;
+		WorkExp*f1 = new WorkExp(0);
+		WorkExp*f2 = new WorkExp(0);
+		WorkExp*f3 = new WorkExp(0);
+		WorkExp*f4 = new WorkExp(0);
+		WorkExp*f5 = new WorkExp(0);
+		(*f1).setDataMembers("f1", "f1", "f1");
+		(*f2).setDataMembers("f2", "f2", "f2");
+		(*f3).setDataMembers("f3", "f3", "f3");
+		(*f4).setDataMembers("f4", "f4", "f4");
+		(*f5).setDataMembers("f5", "f5", "f5");
+		WorkExpQueue queue2;	
+		queue2.pushBack(f1);
+		queue2.pushBack(f2);
+		queue2.pushBack(f3);
+		queue2.pushBack(f4);
+		queue2.pushBack(f5);
+
+	
+		queue.print();
+		queue2.print();
+		cout << "q1+=q2" << endl;
+		queue+=queue2;
+		queue.print();
+
+		cout << "Test + element" << endl;
+		WorkExp* e5 = new WorkExp(0);
+		cout << "======2" << endl;
+		(*e5).setDataMembers("5", "5", "5");
+		cout << "======3 " << endl;
+		newQueue = queue + e5;
+		cout << "======4 " << endl;
+		newQueue.print();
+		cout << "======5 " << endl;
+
+		cout << "Test + Queue" << endl;
+		//WorkExp* e5 = new WorkExp(0);
+		//cout << "======2" << endl;
+		//(*e5).setDataMembers("5", "5", "5");
+		//cout << "======3 " << endl;
+		queue.print();
+		queue2.print();
+		newQueue = queue + queue2;
+		//cout << "======4 " << endl;
+		newQueue.print();
+		cout << "======5 " << endl;
+
+		cout << "Test -= element" << endl;
+		
+		queue.print();
+		queue-=e3;
+		queue.print();
+
+		cout << "Test -= queue" << endl;
+
+		queue-=queue2;
+		queue.print();
+
+		cout << "Test - element" << endl;
+		
+		newQueue = queue - e2;
+		newQueue.print();
+
+		newerQueue += e1;
+		newerQueue += e2;
+		newerQueue += e3;
+		newerQueue += e4;
+		newerQueue += e5;
+		newerQueue.print();
+		newQueue = newerQueue - queue;
+		newQueue.print();
+/*		queue.print();
+		cout << "wwww1" << endl;
+		queue -=(e2);
+		cout << "wwww2" << endl;
+		queue.print();
+*/		
+
 }
-return !flag;
-}
 
-
-
-
-
-
-
-
-
-
-void getNewWorkExp(WorkExp* ein){
-	dataInc();
-	WorkExp e (0);
-	e.setResp("Resp:"+intToString(data1));
-	e.setDataMembers("Data1:"+intToString(data2),"Data2:"+intToString(data3),"Data3:"+intToString(data4));
-	*ein = e;
-}
-
-void dataInc(){
-	data1++;
-	data2++;
-	data3++;
-	data4++;
-}
-
-void dataReset(){
-	data1=0;
-	data2=0;
-	data3=0;
-	data4=0;
-}
-
-string intToString(int i){
-	string s;
-	ostringstream convert;
-	convert << i;
-	s = convert.str();
-	return s;
-}
 
