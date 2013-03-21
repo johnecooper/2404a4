@@ -11,15 +11,15 @@
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 Application::Application() {
-  tACrsQueue     = new TACourseQueue();
-  workExp        = new WorkExpQueue();
-  //cout << "CONSTRUCT Application" << endl;
+	tACrsQueue     = new TACourseQueue();
+	workExp        = new WorkExpQueue();
+	//cout << "CONSTRUCT Application" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 Application::~Application() {
-  //cout << "DESTRUCT Application #" << appNum << endl;
+	//cout << "DESTRUCT Application #" << appNum << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -31,11 +31,11 @@ TACourseQueue*    Application::getTACrsQueue()   const { return tACrsQueue;    }
 WorkExpQueue*     Application::getWorkExpQueue() const { return workExp;       }
 
 string Application::getStatusString(Status stat) const  { 
-  switch(stat) {
-    case 0: return "PENDING";
-    case 1: return "ACCEPTED";
-    case 2: return "CLOSED";
-  }
+	switch(stat) {
+		case 0: return "PENDING";
+		case 1: return "ACCEPTED";
+		case 2: return "CLOSED";
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -50,20 +50,20 @@ void Application::setWorkExpQueue(WorkExpQueue* weq)      { workExp = weq;      
 // Overloaded Operators
 void Application::operator+ ()
 {
-  setStatus(ACCEPTED);
+	setStatus(ACCEPTED);
 }
 
 void Application::operator- ()
 {
-  setStatus(CLOSED);
+	setStatus(CLOSED);
 }
 
 
 //////////////////////////////////////////////////////////////////////////
 // Prints out an application
 void Application::print() const {
-  cout << "APPLICATION #: " << appNum << " for " << course->getName() 
-       << " " << getStatusString(status) << endl;
+	cout << "APPLICATION #: " << appNum << " for " << course->getName() 
+		<< " " << getStatusString(status) << endl;
 }
 
 

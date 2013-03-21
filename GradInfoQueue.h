@@ -9,34 +9,34 @@
 #include "Graduate.h"
 
 class GradInfoQueue {
-  friend class AppManager;
+	friend class AppManager;
 
-  class Node{
-    friend class GradInfoQueue;
-    friend class AppManager;
-    private:
-      Graduate* data;
-      Node*   next;
-  };
+	class Node{
+		friend class GradInfoQueue;
+		friend class AppManager;
+		private:
+		Graduate* data;
+		Node*   next;
+	};
 
-  public:
-    GradInfoQueue();
-    GradInfoQueue(GradInfoQueue&);
-    ~GradInfoQueue();
-    void  pushBack(Graduate*);
-    bool  popFront();
-    Node* front();
-    bool  empty();
-    void  clear();
-    int   size()  const;
-    void  print() const;
+	public:
+	GradInfoQueue();
+	GradInfoQueue(GradInfoQueue&);
+	~GradInfoQueue();
+	void  pushBack(Graduate*);
+	bool  popFront();
+	Node* front();
+	bool  empty();
+	void  clear();
+	int   size()  const;
+	void  print() const;
 
-    Graduate* isInQueue(string) const;
-    
-    
-  private:
-    Node* head;
-   
+	Graduate* isInQueue(string) const;
+
+
+	private:
+	Node* head;
+
 };
 
 #endif

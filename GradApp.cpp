@@ -8,17 +8,17 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
-GradApp::GradApp() 
+	GradApp::GradApp() 
 : Application()
 {
-  grad = new Graduate();
-  //cout << "CONSTRUCT GradApp" << endl;
+	grad = new Graduate();
+	//cout << "CONSTRUCT GradApp" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 GradApp::~GradApp() {
-  cout << "DESTRUCT GradApp #" << getAppNum() << endl;
+	cout << "DESTRUCT GradApp #" << getAppNum() << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -32,6 +32,6 @@ void GradApp::setGrad(Graduate* gr) { grad = gr; }
 //////////////////////////////////////////////////////////////////////////
 // Prints out an application
 void GradApp::print() const {
-  cout << "APPLICATION #: " << getAppNum() << " for " << getCourse()->getName() 
-       << " " << getStatusString(getStatus()) << endl;
+	cout << "APPLICATION #: " << getAppNum() << " for " << getCourse()->getName() 
+		<< " " << getStatusString(getStatus()) << endl;
 }

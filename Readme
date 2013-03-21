@@ -67,7 +67,7 @@ package  - Packages program in a tar file
 LIMITATION #1:
 We suspect that Gtk has a memory leak somewhere, as we are not able to figure
 out why we lose so many blocks of memory although we explicitly deallocate all
-of the memory that we allocated. Below is a copy of the valgrind results after
+of the memory that we have allocated. Below is a copy of the valgrind results after
 one optimal execution of the application.
 
 Also, when trying to fix this issue, it was noticed that when the memory was 

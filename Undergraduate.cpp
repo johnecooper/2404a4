@@ -8,16 +8,16 @@
 //////////////////////////////////////////////////////////////////////////
 // Default Constructor
 Undergraduate::Undergraduate(string num, string fn, string sn, string em, 
-                             string maj, int yr, float cg, float mgpa) 
-  : GenInfo(num, fn, sn, em), major(maj), yearStanding(yr), cgpa(cg), majorGPA(mgpa)
+		string maj, int yr, float cg, float mgpa) 
+: GenInfo(num, fn, sn, em), major(maj), yearStanding(yr), cgpa(cg), majorGPA(mgpa)
 {
-  //cout << "CONSTRUCT Undegraduate" << endl;
+	//cout << "CONSTRUCT Undegraduate" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 Undergraduate::~Undergraduate() {
-  cout << "DESTRUCT Undegraduate StuNum #" << getStuNum() << endl;
+	cout << "DESTRUCT Undegraduate StuNum #" << getStuNum() << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////

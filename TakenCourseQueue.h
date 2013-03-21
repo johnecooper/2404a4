@@ -9,31 +9,31 @@
 #include "TakenCourse.h"
 
 class TakenCourseQueue {
-  friend class Manager;
-  class Node{
-    friend class TakenCourseQueue;
-    private:
-      friend class Manager;
-      TakenCourse* data;
-      Node*   next;
-  };
+	friend class Manager;
+	class Node{
+		friend class TakenCourseQueue;
+		private:
+		friend class Manager;
+		TakenCourse* data;
+		Node*   next;
+	};
 
-  public:
-    TakenCourseQueue();
-    TakenCourseQueue(TakenCourseQueue&);
-    ~TakenCourseQueue();
+	public:
+	TakenCourseQueue();
+	TakenCourseQueue(TakenCourseQueue&);
+	~TakenCourseQueue();
 
-    void  pushBack(TakenCourse*);
-    bool  popFront();
-    Node* front();
-    bool  empty();
-    void  clear();
-    int   size()  const;
-    void  print() const;
-    
-  private:
-    Node* head;
-   
+	void  pushBack(TakenCourse*);
+	bool  popFront();
+	Node* front();
+	bool  empty();
+	void  clear();
+	int   size()  const;
+	void  print() const;
+
+	private:
+	Node* head;
+
 };
 
 #endif

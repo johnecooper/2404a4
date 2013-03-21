@@ -145,8 +145,8 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 				sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_nextButton), "Next") );
 		backButton.signal_clicked().connect(
 				sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &StuAppEditUI::on_backButton), "Back") );
-	
-	show_all_children();
+
+		show_all_children();
 	}//cout << "CONSTRUCT StuAppEditUI" << endl;
 }
 
@@ -198,10 +198,10 @@ void StuAppEditUI::errorDialog(){
 //////////////////////////////////////////////////////////////////////////
 // Display file not found dialog
 void StuAppEditUI::noApplicationDialog(){
-		Gtk::MessageDialog dialog(*this, "ERROR!"); 
-		dialog.set_secondary_text(
-				"Application number not found. Returning to previous screen."); 
-		dialog.run();
+	Gtk::MessageDialog dialog(*this, "ERROR!"); 
+	dialog.set_secondary_text(
+			"Application number not found. Returning to previous screen."); 
+	dialog.run();
 	cout<<"noAppDiag"<<endl;
 	//onQuit();
 }
@@ -229,7 +229,7 @@ void StuAppEditUI::on_nextButton(const Glib::ustring& data) {
 				Tools::stringToFloat(mgpaEntry.get_text()) );
 
 		CourseEditUI* crsEditWin = new CourseEditUI(manager, 0,node);
-	//	CourseInfoUI* crsEditWin = new CourseInfoUI(manager, 0);
+		//	CourseInfoUI* crsEditWin = new CourseInfoUI(manager, 0);
 		crsEditWin->show();
 		hide();
 	}

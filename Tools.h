@@ -8,22 +8,22 @@
 #include "Types.h"
 
 class Tools {
-  public:
-    Tools();
-    ~Tools();
-    
-    // Conversion functions
-    static string floatToString(float);
-    static float  stringToFloat(string);
-    static int    stringToInt(string);
+	public:
+		Tools();
+		~Tools();
 
-    // Error checking functions
-    static int  validStuNum(string aStuNum);
-    static int  validName(string aName);
-    static int  validEmail(string anEmail);
-    static int  validNumber(string aNum);
-    static int  validGPA(string aGPA);
-    static int  getIndexOf(string[],string,int);
+		// Conversion functions
+		static string floatToString(float);
+		static float  stringToFloat(string);
+		static int    stringToInt(string);
+
+		// Error checking functions
+		static int  validStuNum(string aStuNum);
+		static int  validName(string aName);
+		static int  validEmail(string anEmail);
+		static int  validNumber(string aNum);
+		static int  validGPA(string aGPA);
+		static int  getIndexOf(string[],string,int);
 };
 
 #endif

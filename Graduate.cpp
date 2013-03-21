@@ -8,16 +8,16 @@
 //////////////////////////////////////////////////////////////////////////
 // Default Constructor
 Graduate::Graduate(string num, string fn, string sn, string em,
-                   string ra, string prg, string sup) 
-     : GenInfo(num, fn, sn, em), researchArea(ra), program(prg), supervisor(sup)
+		string ra, string prg, string sup) 
+: GenInfo(num, fn, sn, em), researchArea(ra), program(prg), supervisor(sup)
 {
-  //cout << "CONSTRUCT Graduate" << endl;
+	//cout << "CONSTRUCT Graduate" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 Graduate::~Graduate() {
-  cout << "DESTRUCT Graduate StuNum #" << getStuNum() << endl;
+	cout << "DESTRUCT Graduate StuNum #" << getStuNum() << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////

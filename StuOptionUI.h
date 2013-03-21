@@ -9,23 +9,23 @@
 #include <gtkmm.h>
 
 class StuOptionUI : public Gtk::Window {
-  public:
-    StuOptionUI(Manager*);
-    ~StuOptionUI();
+	public:
+		StuOptionUI(Manager*);
+		~StuOptionUI();
 
-    Manager* manager;
+		Manager* manager;
 
-  private:
-    void on_createButton(const Glib::ustring& data);
-    void on_editButton(const Glib::ustring& data);
-    void on_backButton(const Glib::ustring& data);
+	private:
+		void on_createButton(const Glib::ustring& data);
+		void on_editButton(const Glib::ustring& data);
+		void on_backButton(const Glib::ustring& data);
 
-    Gtk::Table         stuTable;
-    Gtk::Label	       stuLabel;
-    Gtk::ComboBoxText  m_Combo;
-    Gtk::Button        createButton, editButton, backButton;
+		Gtk::Table         stuTable;
+		Gtk::Label	       stuLabel;
+		Gtk::ComboBoxText  m_Combo;
+		Gtk::Button        createButton, editButton, backButton;
 
-    bool repeat;
+		bool repeat;
 };
 
 #endif

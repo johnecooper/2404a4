@@ -11,24 +11,24 @@ class Course;
 class Manager;
 
 class TACourse : public Course {
-  public:
-    TACourse(string, Manager*);
-    ~TACourse();
-   
-    Manager* manager;
+	public:
+		TACourse(string, Manager*);
+		~TACourse();
 
-    string  getTerm();
-    string  getYear();
-    string  getSupervisor();
+		Manager* manager;
 
-    void setCourse(string);
-    void setDataMembers(string, string, string);
+		string  getTerm();
+		string  getYear();
+		string  getSupervisor();
+
+		void setCourse(string);
+		void setDataMembers(string, string, string);
 
 
-  private:
-    string   term;
-    string   year;
-    string   supervisor;
+	private:
+		string   term;
+		string   year;
+		string   supervisor;
 };
 
 #endif

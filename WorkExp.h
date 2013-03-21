@@ -10,28 +10,28 @@
 class Manager;
 
 class WorkExp {
-  public:
-    WorkExp(string, Manager*);
-    WorkExp(Manager*);
-    ~WorkExp();
-   
-    Manager* manager;
+	public:
+		WorkExp(string, Manager*);
+		WorkExp(Manager*);
+		~WorkExp();
 
-    string  getResp();
-    string  getDuration();
-    string  getStart();
-    string  getEnd();
+		Manager* manager;
 
-    bool operator==(WorkExp*);
-    void setResp(string);
-    void setDataMembers(string, string, string);
-    void print();
+		string  getResp();
+		string  getDuration();
+		string  getStart();
+		string  getEnd();
 
-  private:
-    string   resp;
-    string   duration;
-    string   start;
-    string   end;
+		bool operator==(WorkExp*);
+		void setResp(string);
+		void setDataMembers(string, string, string);
+		void print();
+
+	private:
+		string   resp;
+		string   duration;
+		string   start;
+		string   end;
 };
 
 #endif

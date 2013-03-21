@@ -9,20 +9,20 @@
 #include "GradAppQueue.h"
 
 class Course {
-  public:
-    Course(string="");
-    ~Course();
+	public:
+		Course(string="");
+		~Course();
 
-    string  getName();
+		string  getName();
 
-    void           setName(string);
-    UGradAppQueue* getUGradApps();
-    GradAppQueue*  getGradApps();
+		void           setName(string);
+		UGradAppQueue* getUGradApps();
+		GradAppQueue*  getGradApps();
 
-  private:
-    string         name;
-    UGradAppQueue* UGradApps;
-    GradAppQueue*  GradApps;
+	private:
+		string         name;
+		UGradAppQueue* UGradApps;
+		GradAppQueue*  GradApps;
 };
 
 #endif

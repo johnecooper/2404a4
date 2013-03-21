@@ -7,16 +7,16 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Default Constructor
-GenInfo::GenInfo(string num, string fn, string sn, string em)
-   : stuNum(num), firstName(fn), surname(sn), email(em)
+	GenInfo::GenInfo(string num, string fn, string sn, string em)
+: stuNum(num), firstName(fn), surname(sn), email(em)
 {
-  //cout << "CONSTRUCT GenInfo" << endl;
+	//cout << "CONSTRUCT GenInfo" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 GenInfo::~GenInfo() {
-  //cout << "DESTRUCT GenInfo StuNum #" << stuNum << endl;
+	//cout << "DESTRUCT GenInfo StuNum #" << stuNum << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////

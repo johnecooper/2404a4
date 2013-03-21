@@ -8,21 +8,21 @@
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 WorkExp::WorkExp(string r, Manager* aManager) {
-  manager = aManager;
-  setResp(r);
-  //cout << "CONSTRUCT WorkExp for " << r << endl;
+	manager = aManager;
+	setResp(r);
+	//cout << "CONSTRUCT WorkExp for " << r << endl;
 }
 
 WorkExp::WorkExp(Manager* aManager) {
-  manager = aManager;
-  //cout << "CONSTRUCT WorkExp" << endl;
+	manager = aManager;
+	//cout << "CONSTRUCT WorkExp" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 WorkExp::~WorkExp() {
-  cout << "DESTRUCT WorkExp" << endl;
-  print();
+	cout << "DESTRUCT WorkExp" << endl;
+	print();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -37,20 +37,20 @@ string  WorkExp::getEnd()          { return end;      }
 void WorkExp::setResp(string r)         { resp = r;       }
 
 void WorkExp::setDataMembers(string dur, string s, string e) {
-  duration = dur;
-  start = s;
-  end = e;
+	duration = dur;
+	start = s;
+	end = e;
 }
 
 bool WorkExp::operator==(WorkExp* w)
 {
-  if(getResp() == w->getResp() && getDuration() == w->getDuration() && getStart() == w->getStart() && getEnd() == w-> getEnd())
-    return true;
-  return false;
+	if(getResp() == w->getResp() && getDuration() == w->getDuration() && getStart() == w->getStart() && getEnd() == w-> getEnd())
+		return true;
+	return false;
 }
 
 void WorkExp::print(){
-cout<<"Resp: "<<resp<<", Dur: "<<duration<<", Start:"<<start<<", End: "<<end<<endl;
+	cout<<"Resp: "<<resp<<", Dur: "<<duration<<", Start:"<<start<<", End: "<<end<<endl;
 }
 
 

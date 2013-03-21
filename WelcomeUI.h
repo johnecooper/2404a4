@@ -9,21 +9,21 @@
 #include <gtkmm.h>
 
 class WelcomeUI : public Gtk::Window {
-  public:
-    WelcomeUI(Manager*);
-    ~WelcomeUI();
+	public:
+		WelcomeUI(Manager*);
+		~WelcomeUI();
 
-    Manager* manager;
+		Manager* manager;
 
-  private:
-    // Signal handlers
-    void on_stuButton(const Glib::ustring& data);
-    void on_adminButton(const Glib::ustring& data);
+	private:
+		// Signal handlers
+		void on_stuButton(const Glib::ustring& data);
+		void on_adminButton(const Glib::ustring& data);
 
-    // Child widgets
-    Gtk::Table 	aTable;
-    Gtk::Label	aTitle;
-    Gtk::Button stuButton, adminButton;
+		// Child widgets
+		Gtk::Table 	aTable;
+		Gtk::Label	aTitle;
+		Gtk::Button stuButton, adminButton;
 };
 
 #endif

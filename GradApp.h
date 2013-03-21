@@ -11,17 +11,17 @@
 class Application;
 
 class GradApp : public Application {
-  public:
-    GradApp();
-    ~GradApp();
+	public:
+		GradApp();
+		~GradApp();
 
-    Graduate*          getGrad()          const;
+		Graduate*          getGrad()          const;
 
-    void   setGrad(Graduate*); 
-    void   print() const;
+		void   setGrad(Graduate*); 
+		void   print() const;
 
-  private:
-    Graduate*  grad; 
+	private:
+		Graduate*  grad; 
 };
 
 #endif
