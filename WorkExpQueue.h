@@ -26,8 +26,12 @@ class WorkExpQueue {
     WorkExp*          operator[](int);
     void              operator+=(WorkExp*);
     void              operator+=(WorkExpQueue&);
-    WorkExpQueue      operator+();
-    
+    WorkExpQueue      operator+(WorkExp*);
+    WorkExpQueue      operator+(WorkExpQueue&);
+    void              operator-=(WorkExp*);
+    void              operator-=(WorkExpQueue&);
+    WorkExpQueue      operator-(WorkExp*);
+    WorkExpQueue      operator-(WorkExpQueue&);    
     void              operator!();
     
     

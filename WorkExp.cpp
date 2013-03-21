@@ -41,6 +41,13 @@ void WorkExp::setDataMembers(string dur, string s, string e) {
   end = e;
 }
 
+bool WorkExp::operator==(WorkExp* w)
+{
+  if(getResp() == w->getResp() && getDuration() == w->getDuration() && getStart() == w->getStart() && getEnd() == w-> getEnd())
+    return true;
+  return false;
+}
+
 void WorkExp::print(){
 cout<<"Resp: "<<resp<<", Dur: "<<duration<<", Start:"<<start<<", End: "<<end<<endl;
 }
