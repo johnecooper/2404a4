@@ -6,8 +6,9 @@
 #define STUAPPEDITUI_H
 
 #include "Types.h"
+#include "CourseQueue.h"
 #include <gtkmm.h>
-
+#include "UGradAppQueue.h"
 class StuAppEditUI : public Gtk::Dialog {
 	public:
 		StuAppEditUI(Manager*,bool*, int);
@@ -23,6 +24,7 @@ class StuAppEditUI : public Gtk::Dialog {
 		void on_nextButton(const Glib::ustring& data);
 		void on_backButton(const Glib::ustring& data);
 		int appNumber;
+		UGradAppQueue::Node * node;
 		void onQuit();
 		Gtk::Table          appTable;
 		Gtk::Label          label;
