@@ -78,12 +78,17 @@ void WorkExpQueue::operator+=(WorkExpQueue& q)
   Node* currNode = head;
   while(currNode!=0)
   {
-    if(currNode->next == 0)
+    if(currNode->next = 0)
     {
-      currNode->next == q.head;
+      currNode = q.head;
+      while(currNode!=0)
+      {
+        pushBack(currNode);
+        currNode = currNode->next;
+      }
       return;
     }
-    currNode = currNode->next;
+  currNode = currNode->next;
   }
 }
 
