@@ -5,14 +5,15 @@
 #include <locale>  // for isdigit, isalpha, ispunct, char_traits
 #include <fstream>
 #include <string>
-
-#include "StuAppEditUI.h"
 #include "CourseInfoUI.h"
+#include "StuAppEditUI.h"
+#include "CourseEditUI.h"
 #include "StudentNumberUI.h"
 #include "Tools.h"
 #include "CourseQueue.h"
 #include "UGradApp.h"
 #include "UGradAppQueue.h"
+
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn) 
@@ -89,13 +90,13 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 		else cout<<"Not"<<endl;
 		n=n->next;
 	}
-	cout<<"End while"<<endl;
 	if(!found){
 		noApplicationDialog();
 		cout<<"No application found"<<endl;
 		*rpt = false;	
 	}
 	else{	
+		node=n;
 		string text, emailName, emailDomain, aMajor;
 
 		stuNumEntry.set_text(n->data->getUndergrad()->getStuNum());
@@ -227,8 +228,9 @@ void StuAppEditUI::on_nextButton(const Glib::ustring& data) {
 				Tools::stringToFloat(cgpaEntry.get_text()),
 				Tools::stringToFloat(mgpaEntry.get_text()) );
 
-		CourseInfoUI* crsInfoWin = new CourseInfoUI(manager, 0);
-		crsInfoWin->show();
+		CourseEditUI* crsEditWin = new CourseEditUI(manager, 0,node);
+	//	CourseInfoUI* crsEditWin = new CourseInfoUI(manager, 0);
+		crsEditWin->show();
 		hide();
 	}
 }

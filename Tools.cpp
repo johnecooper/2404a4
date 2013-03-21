@@ -144,3 +144,10 @@ int Tools::validGPA(string aGPA){
   return 1;
 }
 
+int getIndexOf(string array[], string key, int size){
+	int i=0;
+	for(i;i<size;i++){
+		if(array[i]==key) return i;
+	}
+	return -1;
+}
