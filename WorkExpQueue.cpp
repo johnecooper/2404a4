@@ -87,6 +87,84 @@ void WorkExpQueue::operator+=(WorkExpQueue& q)
   }
 }
 
+WorkExpQueue WorkExpQueue::operator+(WorkExp* w)
+{
+  WorkExpQueue tempQueue;
+  WorkExpQueue& t = *this;
+  tempQueue.operator+=(t);
+  tempQueue.operator+=(w);
+  return tempQueue;
+}
+
+WorkExpQueue WorkExpQueue::operator+(WorkExpQueue& q)
+{
+  WorkExpQueue tempQueue;
+  WorkExpQueue& t = *this;
+  tempQueue.operator+=(t);
+  tempQueue.operator+=(q);
+  return tempQueue;
+}
+
+void WorkExpQueue::operator-=(WorkExp* w)
+{
+  if(head == 0 || w == 0)
+    return;
+  Node *currNode = head;
+  Node *tempNode = new Node;
+  
+  while(!(currNode->data == w) && currNode != 0)
+  {
+    if(currNode == head && (currNode->data) == w)
+      {
+        tempNode = currNode;
+        currNode = currNode->next;
+        head = currNode;
+        delete tempNode->data;
+        delete tempNode;
+        return;
+      }
+    if((currNode->next->data) == w)
+    {
+      tempNode = currNode->next;
+      currNode->next = tempNode->next;
+      delete tempNode->data;
+      delete tempNode;
+      return;
+    }
+    currNode = currNode->next;
+  }
+}
+
+void WorkExpQueue::operator-=(WorkExpQueue& q)
+{
+  if(q.head == 0)
+    return;
+  Node* rightCurrNode = q.head;
+  while(rightCurrNode!=0)
+  {
+    this->operator-=(rightCurrNode->data);
+    rightCurrNode = rightCurrNode->next;
+  }
+}
+
+WorkExpQueue WorkExpQueue::operator-(WorkExp* w)
+{
+  WorkExpQueue tempQueue;
+  WorkExpQueue& t = *this;
+  t.operator-=(w);
+  tempQueue+=(t);
+  return tempQueue;
+}
+
+WorkExpQueue WorkExpQueue::operator-(WorkExpQueue& q)
+{
+  WorkExpQueue tempQueue;
+  WorkExpQueue& t = *this;
+  t.operator-=(q);
+  tempQueue+=(t);
+  return tempQueue;
+}
+
 void WorkExpQueue::operator!()
 {
   clear();

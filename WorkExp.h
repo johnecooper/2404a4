@@ -22,6 +22,7 @@ class WorkExp {
     string  getStart();
     string  getEnd();
 
+    bool operator==(WorkExp*);
     void setResp(string);
     void setDataMembers(string, string, string);
     void print();
