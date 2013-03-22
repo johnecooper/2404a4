@@ -196,7 +196,7 @@ void CourseEditUI::on_nextButton(const Glib::ustring& data){
 		}
 	//Add other application info
 	manager->getCurrUGradApp()->setWorkExpQueue(node->data->getWorkExpQueue());
-	//manager->getCurrUGradApp->set
+	manager->getCurrUGradApp()->setAppNum(++manager->lastAppNum);
 	AcceptEditUI * acceptUI = new AcceptEditUI(manager);
 	acceptUI ->show();
 

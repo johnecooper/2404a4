@@ -31,6 +31,7 @@ class Manager {
     UGradInfoQueue*    getUGradInfo();
     GradInfoQueue*     getGradInfo();
 
+    int                lastAppNum;
     void          setCurrAppsNull();
     void          changeUAppMem();
     void          changeGAppMem();
@@ -46,7 +47,6 @@ class Manager {
   private:
     void               assembleQueues();
 
-    int                lastAppNum;
     UGradApp*          currUGradApp;
     GradApp*           currGradApp;
     CourseQueue*       allCourses;
