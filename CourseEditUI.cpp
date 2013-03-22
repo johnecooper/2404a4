@@ -22,6 +22,8 @@ CourseEditUI::CourseEditUI(Manager* aManager, int i, UGradAppQueue::Node* n)
 	nextButton("Next"),
 	courseButton("New Course"),
 	backButton("Back"),
+	firstCourseButton("First Course"),
+	nextCourseButton("Next Course"),
 	node(n),
 	courseQueue(n->data->getTakenCrsQueue()),
 	TAcourseQueue(n->data->getTACrsQueue())

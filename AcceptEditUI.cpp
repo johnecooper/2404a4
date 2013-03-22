@@ -5,15 +5,16 @@
 #include "AcceptEditUI.h"
 #include "SubmitAppUI.h"
 #include "StuOptionUI.h"
-
+#include "UGradApp.h"
 
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 AcceptEditUI::AcceptEditUI(Manager* aManager) 
-: aTable(2, 2, false),
+: aTable(2, 3, false),
   aLabel("Thank you for editing an application.\n         Would you like to submit? "),
   submitButton("Submit"),
-  cancelButton("Cancel")
+  cancelButton("Cancel"),
+  closeButton("Close Application")
 {
   manager   = aManager;
   
@@ -28,11 +29,15 @@ AcceptEditUI::AcceptEditUI(Manager* aManager)
   aTable.attach(aLabel, 0, 2, 0, 1,Gtk::EXPAND,Gtk::FILL,20,100);
   aTable.attach(cancelButton, 0, 1, 1, 2,Gtk::FILL,Gtk::FILL,40,50);
   aTable.attach(submitButton, 1, 2, 1, 2,Gtk::FILL,Gtk::FILL,40,50);
-  
+  aTable.attach(closeButton, 2,3,1,2,Gtk::FILL,Gtk::FILL,40,50);
+ 
   submitButton.signal_clicked().connect(
     sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &AcceptEditUI::on_submitButton), "Submit") );
   cancelButton.signal_clicked().connect(
     sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &AcceptEditUI::on_cancelButton), "Cancel") );
+closeButton.signal_clicked().connect(
+    sigc::bind<Glib::ustring>( sigc::mem_fun(*this, &AcceptEditUI::on_closeButton), "Close Application") );
+
 
   show_all_children();
 
@@ -63,4 +68,10 @@ void AcceptEditUI::on_cancelButton(const Glib::ustring& data) {
   delete this;
 }
 
-
+void AcceptEditUI::on_closeButton(const Glib::ustring& data) {
+  manager->getCurrUGradApp()->setStatus(CLOSED);
+  manager->saveApp();
+  //StuOptionUI* studentWin = new StuOptionUI(manager);
+  //studentWin->show(); 
+  delete this;
+}

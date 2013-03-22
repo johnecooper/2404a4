@@ -85,7 +85,8 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 	//Recall the application information
 	bool found=false;
 	cout<<"Searching for:"<<appNumber<<endl;
-	while(n->next != 0){
+	while(n != 0){
+		cout<<";"<<appNumber<<":"<<n->data->getAppNum()<<endl;
 		if(n->data->getAppNum()==appNumber){
 			found=true;
 			cout<<"Found app#:" <<n->data->getAppNum()<<endl;
@@ -97,6 +98,15 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 		noApplicationDialog();
 		cout<<"No application found"<<endl;
 		*rpt = false;	
+	}
+	else if(n->data->getStatus()!=PENDING){
+				Gtk::MessageDialog dialog(*this, "ERROR!"); 
+		dialog.set_secondary_text(
+				"Application Status is not Pending. Returning to previous screen."); 
+		dialog.run();
+		
+	cout<<"noAppDiag"<<endl;
+		onQuit();
 	}
 	else{	
 		node=n;

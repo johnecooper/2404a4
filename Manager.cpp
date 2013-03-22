@@ -467,10 +467,24 @@ void Manager::assembleQueues() {
                        allUGradInfo->pushBack(uApp->getUndergrad()); 
                        break;
             }
+		
           }
+	 UGradAppQueue::Node* currTestCrs = getUGradApps()->front();
+		bool found = false;
+   		 while(currTestCrs != 0){
+      			if (currTestCrs->data->getUndergrad()->getStuNum() == uApp->getUndergrad()->getStuNum() && currTestCrs->data->getCourse()->getName() == uApp->getCourse()->getName() ){
+     			        //delete currTestCrs->data;
+				currTestCrs->data=uApp;	
+				found = true;
+				break;
+			}
+ 		     currTestCrs = currTestCrs->next;
+    }
+		if(!found){
           allUGradApps->pushBack(uApp);
           currNode->data->getUGradApps()->pushBack(uApp);
         }
+}
 
         // If it's the beginning of a Grad Application
         else if (text == "*NEW GRAD APPLICATION*") {

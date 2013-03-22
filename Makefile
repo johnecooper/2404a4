@@ -1,6 +1,6 @@
-OBJ = AcceptAppUI.o AdminOptionUI.o AllPendingUI.o Application.o Course.o CourseInfoUI.o CourseQueue.o GenInfo.o GradApp.o GradAppFormUI.o GradAppQueue.o GradInfoQueue.o Graduate.o main.o Manager.o OnePendingUI.o SelectCrsUI.o StuAppFormUI.o StuOptionUI.o SubmitAppUI.o TACourse.o TACourseQueue.o TakenCourseQueue.o TakenCourse.o Tools.o UGradInfoQueue.o UGradApp.o UGradAppQueue.o Undergraduate.o WelcomeUI.o WorkExp.o WorkExpQueue.o WorkExpUI.o StudentNumberUI.o StuAppEditUI.o CourseEditUI.o
+OBJ = AcceptAppUI.o AdminOptionUI.o AllPendingUI.o Application.o Course.o CourseInfoUI.o CourseQueue.o GenInfo.o GradApp.o GradAppFormUI.o GradAppQueue.o GradInfoQueue.o Graduate.o main.o Manager.o OnePendingUI.o SelectCrsUI.o StuAppFormUI.o StuOptionUI.o SubmitAppUI.o TACourse.o TACourseQueue.o TakenCourseQueue.o TakenCourse.o Tools.o UGradInfoQueue.o UGradApp.o UGradAppQueue.o Undergraduate.o WelcomeUI.o WorkExp.o WorkExpQueue.o WorkExpUI.o StudentNumberUI.o StuAppEditUI.o CourseEditUI.o AcceptEditUI.o AllAcceptedUI.o
 
-CPPFILES = AcceptAppUI.cpp AdminOptionUI.cpp AllPendingUI.cpp Application.cpp Course.cpp CourseInfoUI.cpp CourseQueue.cpp GenInfo.cpp GradApp.cpp GradAppFormUI.cpp GradAppQueue.cpp GradInfoQueue.cpp Graduate.cpp main.cpp Manager.cpp OnePendingUI.cpp SelectCrsUI.cpp StuAppFormUI.cpp StuOptionUI.cpp SubmitAppUI.cpp TACourse.cpp TACourseQueue.cpp TakenCourseQueue.cpp TakenCourse.cpp Tools.cpp UGradInfoQueue.cpp UGradApp.cpp UGradAppQueue.cpp Undergraduate.cpp WelcomeUI.cpp WorkExp.cpp WorkExpQueue.cpp WorkExpUI.cpp StudentNumberUI.cpp StuAppEditUI.cpp CourseEditUI.cpp
+CPPFILES = AcceptAppUI.cpp AdminOptionUI.cpp AllPendingUI.cpp Application.cpp Course.cpp CourseInfoUI.cpp CourseQueue.cpp GenInfo.cpp GradApp.cpp GradAppFormUI.cpp GradAppQueue.cpp GradInfoQueue.cpp Graduate.cpp main.cpp Manager.cpp OnePendingUI.cpp SelectCrsUI.cpp StuAppFormUI.cpp StuOptionUI.cpp SubmitAppUI.cpp TACourse.cpp TACourseQueue.cpp TakenCourseQueue.cpp TakenCourse.cpp Tools.cpp UGradInfoQueue.cpp UGradApp.cpp UGradAppQueue.cpp Undergraduate.cpp WelcomeUI.cpp WorkExp.cpp WorkExpQueue.cpp WorkExpUI.cpp StudentNumberUI.cpp StuAppEditUI.cpp CourseEditUI.cpp AcceptEditUI.cpp AllAcceptedUI.cpp
 
 TXT = majors.txt lastAppNum.txt courses.txt info.txt date.txt faculty.txt research.txt Applications AppSummaries
 
@@ -115,6 +115,12 @@ StuAppEditUI.o:		StuAppEditUI.cpp StuAppEditUI.h
 
 CourseEditUI.o:		CourseEditUI.cpp CourseEditUI.h
 		g++ -c CourseEditUI.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
+AcceptEditUI.o:		AcceptEditUI.cpp AcceptEditUI.h
+		g++ -c AcceptEditUI.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
+AllAcceptedUI.o:	AllAcceptedUI.cpp AllAcceptedUI.cpp
+		g++ -c AllAcceptedUI.cpp `pkg-config gtkmm-3.0 --cflags --libs`
 
 clean:
 		rm -f *.o cutaes
