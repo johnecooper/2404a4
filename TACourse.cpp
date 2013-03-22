@@ -9,15 +9,15 @@
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 TACourse::TACourse(string n, Manager* aManager) {
-  manager = aManager;
-  setCourse(n);
-  //cout << "CONSTRUCT TACourse for " << n << endl;
+	manager = aManager;
+	setCourse(n);
+	//cout << "CONSTRUCT TACourse for " << n << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 TACourse::~TACourse() {
-  //cout << "DESTRUCT TACourse" << endl;
+	//cout << "DESTRUCT TACourse" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -29,18 +29,18 @@ string  TACourse::getSupervisor() { return supervisor; }
 //////////////////////////////////////////////////////////////////////////
 // Set functions
 void TACourse::setCourse(string crs) {
-  CourseQueue::Node* currNode = manager->getCourseQueue()->front();
-  while (currNode != 0) {
-    if (currNode->data->getName() == crs) { 
-      setName(currNode->data->getName());
-      break;
-    }
-    currNode = currNode->next;
-  }
+	CourseQueue::Node* currNode = manager->getCourseQueue()->front();
+	while (currNode != 0) {
+		if (currNode->data->getName() == crs) { 
+			setName(currNode->data->getName());
+			break;
+		}
+		currNode = currNode->next;
+	}
 }
 
 void TACourse::setDataMembers(string tr, string yr, string sup){
-  term       = tr;
-  year       = yr;
-  supervisor = sup;
+	term       = tr;
+	year       = yr;
+	supervisor = sup;
 }

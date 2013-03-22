@@ -9,29 +9,29 @@
 #include <gtkmm.h>
 
 class StuAppFormUI : public Gtk::Dialog {
-  public:
-    StuAppFormUI(Manager*, bool);
-    ~StuAppFormUI();
+	public:
+		StuAppFormUI(Manager*, bool);
+		~StuAppFormUI();
 
-    Manager*  manager;
+		Manager*  manager;
 
-  private:
-    int  isEmpty();
-    int  validEntries();
-    void errorDialog();
-    void on_nextButton(const Glib::ustring& data);
-    void on_backButton(const Glib::ustring& data);
+	private:
+		int  isEmpty();
+		int  validEntries();
+		void errorDialog();
+		void on_nextButton(const Glib::ustring& data);
+		void on_backButton(const Glib::ustring& data);
 
-    Gtk::Table          appTable;
-    Gtk::Label          label;
-    Gtk::Label* 	aLabel;
-    Gtk::ScrolledWindow scrolledWindow;
-    Gtk::ComboBoxText   emailCombo, majorCombo, courseCombo;
-    Gtk::Entry          stuNumEntry, nameEntry, surnameEntry, majorEntry, 
-				emailEntry, yearEntry,cgpaEntry, mgpaEntry;    
-    Gtk::Button	        nextButton, backButton;
+		Gtk::Table          appTable;
+		Gtk::Label          label;
+		Gtk::Label* 	aLabel;
+		Gtk::ScrolledWindow scrolledWindow;
+		Gtk::ComboBoxText   emailCombo, majorCombo, courseCombo;
+		Gtk::Entry          stuNumEntry, nameEntry, surnameEntry, majorEntry, 
+			emailEntry, yearEntry,cgpaEntry, mgpaEntry;    
+		Gtk::Button	        nextButton, backButton;
 
-    bool repeat;
+		bool repeat;
 };
 
 #endif

@@ -10,35 +10,35 @@
 class TACourse;
 
 class TACourseQueue {
-  friend class Manager;
-    friend class CourseEditUI;
-  class Node{
-    friend class TACourseQueue;
-    friend class Manager;
-    friend class CourseEditUI;
-    private:
-	
-      TACourse* data;
-      Node*     next;
-  };
+	friend class Manager;
+	friend class CourseEditUI;
+	class Node{
+		friend class TACourseQueue;
+		friend class Manager;
+		friend class CourseEditUI;
+		private:
 
-  public:
-    TACourseQueue();
-    TACourseQueue(TACourseQueue&);
-    ~TACourseQueue();
+		TACourse* data;
+		Node*     next;
+	};
 
-    void  pushBack(TACourse*);
+	public:
+	TACourseQueue();
+	TACourseQueue(TACourseQueue&);
+	~TACourseQueue();
 
-    bool  popFront();
-    Node* front();
-    bool  empty();
-    void  clear();
-    int   size()  const;
-    void  print() const;
-    
-  private:
-    Node* head;
-   
+	void  pushBack(TACourse*);
+
+	bool  popFront();
+	Node* front();
+	bool  empty();
+	void  clear();
+	int   size()  const;
+	void  print() const;
+
+	private:
+	Node* head;
+
 };
 
 #endif

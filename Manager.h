@@ -16,44 +16,44 @@ class GradAppQueue;
 class CourseQueue;
 
 class Manager {
-  friend class AcceptWindow;
-  public:
-    Manager();
-    ~Manager();
+	friend class AcceptWindow;
+	public:
+	Manager();
+	~Manager();
 
-    UGradApp*          makeNewUGradApp();
-    GradApp*           makeNewGradApp();
-    UGradApp*          getCurrUGradApp();
-    GradApp*           getCurrGradApp();
-    CourseQueue*       getCourseQueue();
-    UGradAppQueue*     getUGradApps();
-    GradAppQueue*      getGradApps();
-    UGradInfoQueue*    getUGradInfo();
-    GradInfoQueue*     getGradInfo();
+	UGradApp*          makeNewUGradApp();
+	GradApp*           makeNewGradApp();
+	UGradApp*          getCurrUGradApp();
+	GradApp*           getCurrGradApp();
+	CourseQueue*       getCourseQueue();
+	UGradAppQueue*     getUGradApps();
+	GradAppQueue*      getGradApps();
+	UGradInfoQueue*    getUGradInfo();
+	GradInfoQueue*     getGradInfo();
 
-    int                lastAppNum;
-    void          setCurrAppsNull();
-    void          changeUAppMem();
-    void          changeGAppMem();
-    void          cancelApp();
-    void          saveApp();
-    void          setCourse(UGradApp*, string);
-    void          setCourse(GradApp*, string);
-    void          setUGradInfo(string, string, string, string, string, int, float, float);
-    void          editUGradInfo(string, string, string, string, string, int, float, float);
-    void          setGradInfo(string, string, string, string, string, string, string);
+	int                lastAppNum;
+	void          setCurrAppsNull();
+	void          changeUAppMem();
+	void          changeGAppMem();
+	void          cancelApp();
+	void          saveApp();
+	void          setCourse(UGradApp*, string);
+	void          setCourse(GradApp*, string);
+	void          setUGradInfo(string, string, string, string, string, int, float, float);
+	void          editUGradInfo(string, string, string, string, string, int, float, float);
+	void          setGradInfo(string, string, string, string, string, string, string);
 
 
-  private:
-    void               assembleQueues();
+	private:
+	void               assembleQueues();
 
-    UGradApp*          currUGradApp;
-    GradApp*           currGradApp;
-    CourseQueue*       allCourses;
-    GradAppQueue*      allGradApps;
-    UGradAppQueue*     allUGradApps;
-    GradInfoQueue*     allGradInfo;
-    UGradInfoQueue*    allUGradInfo;
+	UGradApp*          currUGradApp;
+	GradApp*           currGradApp;
+	CourseQueue*       allCourses;
+	GradAppQueue*      allGradApps;
+	UGradAppQueue*     allUGradApps;
+	GradInfoQueue*     allGradInfo;
+	UGradInfoQueue*    allUGradInfo;
 };
 
 #endif

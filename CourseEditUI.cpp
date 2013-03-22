@@ -127,7 +127,7 @@ void CourseEditUI::initWindow(Manager* aManager) {
 		for (i=0; i<(count); i++){ 
 			finalCombo.append(superComboList[i]);
 			gradeComboList[i]=superComboList[i];	
-	}}
+		}}
 
 
 	termCombo.set_active(0);
@@ -194,11 +194,11 @@ void CourseEditUI::on_nextButton(const Glib::ustring& data){
 			else
 				manager->getCurrGradApp()->getTACrsQueue()->pushBack(tACourse);      
 		}
-	//Add other application info
-	manager->getCurrUGradApp()->setWorkExpQueue(node->data->getWorkExpQueue());
-	manager->getCurrUGradApp()->setAppNum(++manager->lastAppNum);
-	AcceptEditUI * acceptUI = new AcceptEditUI(manager);
-	acceptUI ->show();
+		//Add other application info
+		manager->getCurrUGradApp()->setWorkExpQueue(node->data->getWorkExpQueue());
+		manager->getCurrUGradApp()->setAppNum(++manager->lastAppNum);
+		AcceptEditUI * acceptUI = new AcceptEditUI(manager);
+		acceptUI ->show();
 
 
 	}
@@ -244,7 +244,7 @@ void CourseEditUI::on_courseButton(const Glib::ustring& data){
 		return;
 	}
 	else{
-	Gtk::MessageDialog dialog(*this, "Added"); 
+		Gtk::MessageDialog dialog(*this, "Added"); 
 		dialog.set_secondary_text("The data has been added."); 
 		dialog.run();
 		return;
@@ -329,39 +329,39 @@ void CourseEditUI::refresh(){
 		}
 	}
 	else{
-	if(!TAcourseQueue->empty()){
-TACourseQueue::Node * temp = TAcourseQueue->front();	
-		int i;
-		for(i=0;i<offset;i++){
-			temp = temp->next;
-		}
+		if(!TAcourseQueue->empty()){
+			TACourseQueue::Node * temp = TAcourseQueue->front();	
+			int i;
+			for(i=0;i<offset;i++){
+				temp = temp->next;
+			}
 
-		for(i=0;i<3;i++){
-			if(termComboList[i]==temp->data->getTerm()){
-				termCombo.set_active(i);
-				break;
+			for(i=0;i<3;i++){
+				if(termComboList[i]==temp->data->getTerm()){
+					termCombo.set_active(i);
+					break;
+				}
 			}
-		}
-		for(i=0;i<MAX_BUF;i++){
-			if(gradeComboList[i]==temp->data->getSupervisor()){
-				finalCombo.set_active(i);
-				break;
+			for(i=0;i<MAX_BUF;i++){
+				if(gradeComboList[i]==temp->data->getSupervisor()){
+					finalCombo.set_active(i);
+					break;
+				}
 			}
-		}
-		for(i=0;i<MAX_BUF;i++){
+			for(i=0;i<MAX_BUF;i++){
 
-			if(courseComboList[i]==temp->data->getName()){
-				courseCombo.set_active(i);
-				break;
+				if(courseComboList[i]==temp->data->getName()){
+					courseCombo.set_active(i);
+					break;
+				}
 			}
-		}
-		for(i=0;i<MAX_BUF;i++){
-			if(yearComboList[i]==temp->data->getYear()){
-				yearCombo.set_active(i);
-				break;
+			for(i=0;i<MAX_BUF;i++){
+				if(yearComboList[i]==temp->data->getYear()){
+					yearCombo.set_active(i);
+					break;
+				}
 			}
-		}
 
-}
+		}
 	}
 }

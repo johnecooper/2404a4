@@ -9,15 +9,15 @@
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
 TakenCourse::TakenCourse(string n, Manager* aManager) {
-  manager = aManager;
-  setCourse(n);
-  //cout << "CONSTRUCT TakenCourse for " << n << endl;
+	manager = aManager;
+	setCourse(n);
+	//cout << "CONSTRUCT TakenCourse for " << n << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 TakenCourse::~TakenCourse() {
-  //cout << "DESTRUCT TakenCourse" << endl;
+	//cout << "DESTRUCT TakenCourse" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -29,18 +29,18 @@ string  TakenCourse::getFinalGrade() { return finalGrade; }
 //////////////////////////////////////////////////////////////////////////
 // Set functions
 void TakenCourse::setCourse(string crs) { 
-  CourseQueue::Node* currNode = manager->getCourseQueue()->front();
-  while (currNode != 0) {
-    if (currNode->data->getName() == crs) { 
-      setName(currNode->data->getName());
-      break;
-    }
-    currNode = currNode->next;
-  }
+	CourseQueue::Node* currNode = manager->getCourseQueue()->front();
+	while (currNode != 0) {
+		if (currNode->data->getName() == crs) { 
+			setName(currNode->data->getName());
+			break;
+		}
+		currNode = currNode->next;
+	}
 }
 
 void TakenCourse::setDataMembers(string tr, string yr, string fg){
-  term       = tr;
-  year       = yr;
-  finalGrade = fg;
+	term       = tr;
+	year       = yr;
+	finalGrade = fg;
 }

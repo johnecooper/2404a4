@@ -10,24 +10,24 @@
 #include <gtkmm.h>
 
 class AllAcceptedUI : public Gtk::Window {
-  public:
-    AllAcceptedUI(Manager*);
-    ~AllAcceptedUI();
+	public:
+		AllAcceptedUI(Manager*);
+		~AllAcceptedUI();
 
-    Manager* manager;
+		Manager* manager;
 
-  private:
-    void on_backButton(const Glib::ustring& data);
-    void on_cancelButton(const Glib::ustring& data);
-    void on_saveButton(const Glib::ustring& data);
-    void fillSummary();
-    void saveDialog();
+	private:
+		void on_backButton(const Glib::ustring& data);
+		void on_cancelButton(const Glib::ustring& data);
+		void on_saveButton(const Glib::ustring& data);
+		void fillSummary();
+		void saveDialog();
 
-    Gtk::Table          aTable;
-    Gtk::Label	        aLabel;
-    Gtk::Button	        backButton, cancelButton, saveButton;
-    Gtk::ListViewText   summary;
-    Gtk::ScrolledWindow scrolledWindow;
+		Gtk::Table          aTable;
+		Gtk::Label	        aLabel;
+		Gtk::Button	        backButton, cancelButton, saveButton;
+		Gtk::ListViewText   summary;
+		Gtk::ScrolledWindow scrolledWindow;
 };
 
 #endif

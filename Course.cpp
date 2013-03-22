@@ -7,16 +7,16 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
-Course::Course(string n) 
+	Course::Course(string n) 
 : name(n), UGradApps(new UGradAppQueue()), GradApps(new GradAppQueue())
 {
-  cout << "CONSTRUCT Course" << endl;
+	cout << "CONSTRUCT Course" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 Course::~Course() {
-  cout << "DESTRUCT Course " << name << endl;
+	cout << "DESTRUCT Course " << name << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////

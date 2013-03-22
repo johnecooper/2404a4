@@ -14,22 +14,22 @@ class TakenCourseQueue;
 
 
 class UGradApp : public Application {
-  public:
-    UGradApp();
-    ~UGradApp();
+	public:
+		UGradApp();
+		~UGradApp();
 
-    Undergraduate*     getUndergrad()     const;
-    TakenCourseQueue*  getTakenCrsQueue() const;
+		Undergraduate*     getUndergrad()     const;
+		TakenCourseQueue*  getTakenCrsQueue() const;
 
-    void   setUndergrad(Undergraduate*); 
-    void   setTakenCrsQueue(TakenCourseQueue*);
-    void   print() const;
+		void   setUndergrad(Undergraduate*); 
+		void   setTakenCrsQueue(TakenCourseQueue*);
+		void   print() const;
 
-  private:
-    Undergraduate*    undergrad;
+	private:
+		Undergraduate*    undergrad;
 
-    // Linked lists
-    TakenCourseQueue* takenCrsQueue;  
+		// Linked lists
+		TakenCourseQueue* takenCrsQueue;  
 };
 
 #endif

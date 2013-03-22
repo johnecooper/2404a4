@@ -9,22 +9,22 @@
 #include <gtkmm.h>
 
 class SelectCrsUI : public Gtk::Window {
-  public:
-    SelectCrsUI(Manager*);
-    ~SelectCrsUI();
+	public:
+		SelectCrsUI(Manager*);
+		~SelectCrsUI();
 
-    Manager* manager;
+		Manager* manager;
 
 
-  private:
-    void on_nextButton(const Glib::ustring& data);
-    void on_backButton(const Glib::ustring& data);
+	private:
+		void on_nextButton(const Glib::ustring& data);
+		void on_backButton(const Glib::ustring& data);
 
-    // Widgets
-    Gtk::Table         createTable;
-    Gtk::Label         createLabel;
-    Gtk::Button        nextButton, backButton;
-    Gtk::ComboBoxText  m_Combo;
+		// Widgets
+		Gtk::Table         createTable;
+		Gtk::Label         createLabel;
+		Gtk::Button        nextButton, backButton;
+		Gtk::ComboBoxText  m_Combo;
 };
 
 #endif

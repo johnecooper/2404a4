@@ -9,20 +9,20 @@
 #include <gtkmm.h>
 
 class AcceptEditUI : public Gtk::Window {
-  public:
-    AcceptEditUI( Manager*);
-    ~AcceptEditUI();
+	public:
+		AcceptEditUI( Manager*);
+		~AcceptEditUI();
 
-    Manager*  manager;
+		Manager*  manager;
 
-  private:
-    void on_submitButton(const Glib::ustring& data);
-    void on_cancelButton(const Glib::ustring& data);
-    void on_closeButton(const Glib::ustring& data);
+	private:
+		void on_submitButton(const Glib::ustring& data);
+		void on_cancelButton(const Glib::ustring& data);
+		void on_closeButton(const Glib::ustring& data);
 
-    Gtk::Table          aTable;
-    Gtk::Label          aLabel;    
-    Gtk::Button	        submitButton, cancelButton, closeButton;
+		Gtk::Table          aTable;
+		Gtk::Label          aLabel;    
+		Gtk::Button	        submitButton, cancelButton, closeButton;
 };
 
 #endif

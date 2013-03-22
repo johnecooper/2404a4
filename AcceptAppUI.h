@@ -9,19 +9,19 @@
 #include <gtkmm.h>
 
 class AcceptAppUI : public Gtk::Window {
-  public:
-    AcceptAppUI( Manager*);
-    ~AcceptAppUI();
+	public:
+		AcceptAppUI( Manager*);
+		~AcceptAppUI();
 
-    Manager*  manager;
+		Manager*  manager;
 
-  private:
-    void on_submitButton(const Glib::ustring& data);
-    void on_cancelButton(const Glib::ustring& data);
+	private:
+		void on_submitButton(const Glib::ustring& data);
+		void on_cancelButton(const Glib::ustring& data);
 
-    Gtk::Table          aTable;
-    Gtk::Label          aLabel;    
-    Gtk::Button	        submitButton, cancelButton;
+		Gtk::Table          aTable;
+		Gtk::Label          aLabel;    
+		Gtk::Button	        submitButton, cancelButton;
 };
 
 #endif

@@ -7,18 +7,18 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Default constructor
-UGradApp::UGradApp() 
-     : Application()
+	UGradApp::UGradApp() 
+: Application()
 {
-  undergrad      = new Undergraduate();
-  takenCrsQueue  = new TakenCourseQueue();
-  //cout << "CONSTRUCT UndergradApp" << endl;
+	undergrad      = new Undergraduate();
+	takenCrsQueue  = new TakenCourseQueue();
+	//cout << "CONSTRUCT UndergradApp" << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Destructor
 UGradApp::~UGradApp() {
-  cout << "DESTRUCT UndergradApp #" << getAppNum() << endl;
+	cout << "DESTRUCT UndergradApp #" << getAppNum() << endl;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -34,6 +34,6 @@ void UGradApp::setTakenCrsQueue(TakenCourseQueue* tcq) { takenCrsQueue = tcq; }
 //////////////////////////////////////////////////////////////////////////
 // Prints out an application
 void UGradApp::print() const {
-  cout << "APPLICATION #: " << getAppNum() << " for " << getCourse()->getName() 
-       << " " << getStatusString(getStatus()) << endl;
+	cout << "APPLICATION #: " << getAppNum() << " for " << getCourse()->getName() 
+		<< " " << getStatusString(getStatus()) << endl;
 }

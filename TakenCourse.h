@@ -11,23 +11,23 @@ class Course;
 class Manager;
 
 class TakenCourse : public Course {
-  public:
-    TakenCourse(string,  Manager*);
-    ~TakenCourse();
-   
-    Manager* manager;
+	public:
+		TakenCourse(string,  Manager*);
+		~TakenCourse();
 
-    string  getTerm();
-    string  getYear();
-    string  getFinalGrade();
+		Manager* manager;
 
-    void setDataMembers(string, string, string);
-    void setCourse(string);
+		string  getTerm();
+		string  getYear();
+		string  getFinalGrade();
 
-  private:
-    string   term;
-    string   year;
-    string   finalGrade;
+		void setDataMembers(string, string, string);
+		void setCourse(string);
+
+	private:
+		string   term;
+		string   year;
+		string   finalGrade;
 };
 
 #endif

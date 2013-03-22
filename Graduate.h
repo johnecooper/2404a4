@@ -10,23 +10,23 @@
 class GenInfo;
 
 class Graduate : public GenInfo {
-  public:
-    Graduate(string="000000000",string="",string="",string="",
-             string="",string="",string="");
-   ~Graduate();
+	public:
+		Graduate(string="000000000",string="",string="",string="",
+				string="",string="",string="");
+		~Graduate();
 
-   string getResearch();
-   string getSupervisor();
-   string getProgram();
-   
-   void   setResearch(string);
-   void   setSupervisor(string);
-   void   setProgram(string);
+		string getResearch();
+		string getSupervisor();
+		string getProgram();
 
-  private:
-    string researchArea;
-    string program;
-    string supervisor;
+		void   setResearch(string);
+		void   setSupervisor(string);
+		void   setProgram(string);
+
+	private:
+		string researchArea;
+		string program;
+		string supervisor;
 };
 
 #endif
