@@ -39,7 +39,9 @@ class Manager {
     void          setCourse(UGradApp*, string);
     void          setCourse(GradApp*, string);
     void          setUGradInfo(string, string, string, string, string, int, float, float);
+    void          editUGradInfo(string, string, string, string, string, int, float, float);
     void          setGradInfo(string, string, string, string, string, string, string);
+
 
   private:
     void               assembleQueues();

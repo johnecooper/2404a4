@@ -61,6 +61,7 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 		courseCombo.append(currNode->data->getName());
 		if((currNode->data->getName()) == (n->data->getCourse()->getName())){
 			courseCombo.set_active(num);
+			cout<<"set!"<<endl;
 		}
 		num++;
 		currNode = currNode->next;
@@ -90,7 +91,6 @@ StuAppEditUI::StuAppEditUI(Manager* aManager, bool * rpt, int appNumIn)
 			cout<<"Found app#:" <<n->data->getAppNum()<<endl;
 			break;
 		}
-		else cout<<"Not"<<endl;
 		n=n->next;
 	}
 	if(!found){
@@ -222,7 +222,7 @@ void StuAppEditUI::on_nextButton(const Glib::ustring& data) {
 			currNode = currNode->next;
 		}
 
-		manager->setUGradInfo( stuNumEntry.get_text(),
+		manager->editUGradInfo( stuNumEntry.get_text(),
 				nameEntry.get_text(),
 				surnameEntry.get_text(),
 				emailEntry.get_text() + emailCombo.get_active_text(),

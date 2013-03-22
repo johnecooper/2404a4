@@ -352,6 +352,22 @@ void Manager::setUGradInfo(string num, string fn, string sn, string em,
   }
 }
 
+void Manager::editUGradInfo(string num, string fn, string sn, string em, 
+                             string maj, int yr, float cg, float mgpa) {
+  // If this Undergrad is in the queue, set the Undergrad pointer
+
+    currUGradApp->getUndergrad()->setStuNum(num);
+    currUGradApp->getUndergrad()->setFirstName(fn);
+    currUGradApp->getUndergrad()->setSurname(sn);
+    currUGradApp->getUndergrad()->setEmail(em);
+    currUGradApp->getUndergrad()->setMajor(maj);
+    currUGradApp->getUndergrad()->setYear(yr);
+    currUGradApp->getUndergrad()->setCGPA(cg);
+    currUGradApp->getUndergrad()->setMGPA(mgpa);
+    allUGradInfo->pushBack(currUGradApp->getUndergrad());
+  
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Sets the Grad pointer to the appropriate Grad in allGradInfo
 // But if it is a new Grad, set the data members and add to allGradInfo

@@ -11,10 +11,13 @@ class TACourse;
 
 class TACourseQueue {
   friend class Manager;
+    friend class CourseEditUI;
   class Node{
     friend class TACourseQueue;
     friend class Manager;
+    friend class CourseEditUI;
     private:
+	
       TACourse* data;
       Node*     next;
   };

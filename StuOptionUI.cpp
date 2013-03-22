@@ -96,12 +96,17 @@ void StuOptionUI::on_editButton(const Glib::ustring& data){
     delete this;
   }
   else if (m_Combo.get_active_text() == "Graduate"){
-    createButton.set_sensitive(false);
-    manager->makeNewGradApp();
+    //createButton.set_sensitive(false);
+    //manager->makeNewGradApp();
     //GradAppFormUI* gradFormWin = new GradAppFormUI(manager, 0);
     //gradFormWin->show();  
-    StudentNumberUI* studentNumberUI = new StudentNumberUI(manager,0);
-    studentNumberUI->show();  
+    //StudentNumberUI* studentNumberUI = new StudentNumberUI(manager,0);
+    //studentNumberUI->show();  
+Gtk::MessageDialog dialog(*this, "ERROR!"); 
+    dialog.set_secondary_text(
+       "Graduate Editing Not Implemented.");
+    dialog.run();
+	
 
     delete this;
   }

@@ -33,11 +33,14 @@ class CourseEditUI : public Gtk::Window {
     void refresh();
     void on_nextCourseButton(const Glib::ustring& data);
     TakenCourseQueue * courseQueue;
+    TACourseQueue * TAcourseQueue;
+    int offset;
     string * courseComboList;
     string * yearComboList;
     string * gradeComboList;
     string * termComboList;
-    //TakenCourseQueue::Node * qNode; 
+     
+    //TakenCourse * tCourse; 
     // Widgets
     Gtk::Table         createTable;
     Gtk::Label         aLabel, yearLabel, termLabel, finalLabel;
